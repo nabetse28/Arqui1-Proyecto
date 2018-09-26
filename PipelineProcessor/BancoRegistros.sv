@@ -1,8 +1,8 @@
-module regfile(input logic clk,
-input logic we3, reset,
-input logic [3:0] ra1, ra2, wa3,
-input logic [31:0] wd3, r15,
-output logic [31:0] rd1, rd2
+module BancoRegistors(	input logic clk,
+								input logic we3, reset,
+								input logic [3:0] ra1, ra2, wa3,
+								input logic [31:0] wd3, r15,
+								output logic [31:0] rd1, rd2
 
 );
 

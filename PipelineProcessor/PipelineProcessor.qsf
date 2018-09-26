@@ -48,6 +48,7 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name SYSTEMVERILOG_FILE MemInst.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Sumador_Completo_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Sumador_Completo.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Sumador_1bit.sv
@@ -56,5 +57,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE ALU.sv
 set_global_assignment -name SYSTEMVERILOG_FILE BancoRegistros.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Multiplexor3_1.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Multiplexor.sv
-set_global_assignment -name SYSTEMVERILOG_FILE MemoriaDeInstrucciones.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Extend.sv
+set_global_assignment -name SYSTEMVERILOG_FILE MemDatos.sv
+set_global_assignment -name SYSTEMVERILOG_FILE PCreg.sv

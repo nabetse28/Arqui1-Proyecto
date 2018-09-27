@@ -1,4 +1,4 @@
-module extend(	input logic [23:0] Instr,
+module Extend(	input logic [23:0] Instr,
 					input logic [1:0] ImmSrc,
 					output logic [31:0] ExtImm);
 

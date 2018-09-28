@@ -19,7 +19,7 @@ flopenr #(2)flagreg0(clk, reset, FlagWrite[0],
 							
 							
 // write controls are conditional
-condcheck cc(Cond, Flags, CondEx);
+condcheck cc(CondE, Flags, CondEx);
 
 assign FlagWrite = FlagWriteE & {2{CondEx}};
 assign RegWriteM = RegWriteE & CondEx;

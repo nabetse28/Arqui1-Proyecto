@@ -27,10 +27,10 @@ logic [5:0] Funct;
 logic [3:0] WA3W, WA3E, WA3M;
 
 PasoDatos pasodatos(.clk(CLK_50), .reset(reset),
-							.PCSrcW(PCSrcW), .BranchTakenE(BranchTakenE), .StallF(StallF), .StallD(StallD), .FlushD(FlushD),
+							.PCSrcW(PCSrcW), .BranchTakenE(BranchTakenE), .StallF(StallF), .StallD(StallD), .FlushD(reset),
 							.RegSrcD(RegSrcD), .ImmSrcD(ImmSrcD),
 							.RegWriteW(RegWriteW),
-							.FlushE(FlusE), .ALUSrcE(ALUSrcE),
+							.FlushE(FlushE), .ALUSrcE(ALUSrcE),
 							.ForwardAE(ForwardAE), .ForwardBE(ForwardBE), .AluControlE(ALUControlE),
 							.MemWriteM(MemWriteM), .MemtoRegW(MemtoRegW),
 							.AluFlags(AluFlags),

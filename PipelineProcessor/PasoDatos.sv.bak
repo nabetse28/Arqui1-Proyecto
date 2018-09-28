@@ -5,10 +5,7 @@ module PasoDatos  (	input logic clk, reset,
 							input logic FlushE, ALUSrcE,
 							input logic [1:0] ForwardAE, ForwardBE, AluControlE,
 							input logic MemWriteM, MemtoRegW,
-							output logic [3:0] AluFlags,
-							output logic [1:0] Opcode,
-							output logic [3:0] Rd, CondD, RA1E, RA2E, ra1d, ra2d,
-							output logic [5:0] Funct);
+							output logic [3:0] AluFlags);
 	
 	//Seccion de Fetch
 	
@@ -18,7 +15,7 @@ module PasoDatos  (	input logic clk, reset,
 	
 	Mux2 # (32) mux_pcnext (PCJump, ALUResultE, BranchTakenE, PCNext);
 	
-	PCreg # (32) PC (clk, reset, StallF, PCNext, PCout);
+	PCreg # (32) PC (clk, StallF, PCNext, PCout);
 	
 	assign PCPlus4 = PCout + 4;
 	
@@ -36,15 +33,10 @@ module PasoDatos  (	input logic clk, reset,
 	
 	assign InstD = regF;
 	
-	assign Opcode = InstD [27:26];
-	assign Funct = InstD [25:20];
-	assign Rd = InstD [15:12];
-	assign CondD = InstD [31:28];
-	
 	Mux2 # (4) mux_ra1 (InstD[19:16], 4'b1111, RegSrcD[0], RA1D);
 	Mux2 # (4) mux_ra2 (InstD[3:0], InstD[15:12], RegSrcD[1], RA2D);
 	
-	BancoRegistros BR (clk, RegWriteW, reset, RA1D, RA2D, WA3W, ResultW, PCPlus4, RD1, RD2);
+	BancoRegistros BR (clk, RegWriteW, reset, RA1D, RA2D, WA3W, ResultW, (PCPlus4 + 4), RD1, RD2);
 	
 	Extend extend (InstD[23:0], ImmSrcD, ExtOut);
 	
@@ -53,10 +45,7 @@ module PasoDatos  (	input logic clk, reset,
 	logic [31:0] RDE1, RDE2, ExtE, ALUOutM, Op1, Op2, WriteDataE;
 	logic [3:0] A3E;
 	
-	assign ra1d = RA1D;
-	assign ra2d = RA2D;
-	
-	RegDE regde (clk, FlushE, RD1, RD2, ExtOut, InstD[15:12], RA1D, RA2D, RDE1, RDE2, ExtE, A3E, RA1E, RA2E);
+	RegDE regde (clk, FlushE, RD1, RD2, ExtOut, InstD[15:12], RDE1, RDE2, ExtE, A3E);
 	
 	//Seccion de Exe
 	

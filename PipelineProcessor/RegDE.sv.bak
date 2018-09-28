@@ -1,19 +1,17 @@
 module RegDE (	input logic clk, clr,
 					input logic [31:0] rd1, rd2, ext,
-					input logic [3:0] a3, RA1D, RA2D,
+					input logic [3:0] a3,
 					output logic [31:0] rdo1, rdo2, exto,
-					output logic [3:0] ao3, RA1E, RA2E);
+					output logic [3:0] ao3);
 					
 
-always_ff @(negedge clk) begin
+always_ff @(posedge clk) begin
 
 	if(clr)begin
 				rdo1 <= 32'b0;
 				rdo2 <= 32'b0;
 				exto <= 32'b0;
 				ao3 <= 4'b0;
-				RA1E <= 4'b0;
-				RA2E <= 4'b0;
 				
 		end
 
@@ -22,8 +20,6 @@ always_ff @(negedge clk) begin
 			rdo2 <= rd2;
 			exto <= ext;
 			ao3 <= a3;
-			RA1E <= RA1D;
-			RA2E <= RA2D;
 		end
 
 end

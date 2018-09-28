@@ -3,7 +3,7 @@ module RegFD (	input logic clk, en, clr,
 					output logic [31:0] instD);
 					
 
-always_ff @(negedge clk) begin
+always_ff @(posedge clk) begin
 
 	if(clr)begin
 				instD <= 32'b0;

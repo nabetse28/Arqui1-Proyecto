@@ -2,15 +2,15 @@ module testbench_Pipeline();
 
 logic clk;
 logic reset;
-logic [31:0] ALUResult;
+logic [31:0] ALUResult, TestInst, TestInstD;
 
 // instantiate device to be tested
-Pipeline_ARM dut(clk, reset, ALUResult);
+Pipeline_ARM dut(clk, reset, ALUResult, TestInst, TestInstD);
 
 // initialize test
 initial
 	begin
-		reset <= 1; # 22; reset <= 0;
+		reset <= 1; # 10; reset <= 0;
 	end
 	
 // generate clock to sequence tests

@@ -29,11 +29,11 @@ module ALU #(parameter N = 32) (input logic [N-1 : 0] Op_A,
 	
 	//and
 	logic [N-1:0] and_s;
-	assign and_s = Op_A && Op_B;
+	assign and_s = Op_A & Op_B;
 	
 	//or
 	logic [N-1:0] or_s;
-	assign or_s = Op_A || Op_B;
+	assign or_s = Op_A | Op_B;
 	
 	
 	

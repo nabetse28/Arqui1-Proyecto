@@ -8,7 +8,8 @@ module PasoDatos  (	input logic clk, reset,
 							output logic [3:0] AluFlags,
 							output logic [1:0] Opcode,
 							output logic [3:0] Rd, CondD, RA1E, RA2E, ra1d, ra2d,
-							output logic [5:0] Funct);
+							output logic [5:0] Funct,
+							output logic [3:0] WA3W, WA3E, WA3M);
 	
 	//Seccion de Fetch
 	
@@ -32,7 +33,7 @@ module PasoDatos  (	input logic clk, reset,
 	//Seccion de Deco
 	
 	logic [31:0] InstD, RA1D, RA2D, RD1, RD2, ExtOut;
-	logic [3:0] WA3W;
+	logic [3:0] WA3WO;
 	
 	assign InstD = regF;
 	
@@ -44,7 +45,7 @@ module PasoDatos  (	input logic clk, reset,
 	Mux2 # (4) mux_ra1 (InstD[19:16], 4'b1111, RegSrcD[0], RA1D);
 	Mux2 # (4) mux_ra2 (InstD[3:0], InstD[15:12], RegSrcD[1], RA2D);
 	
-	BancoRegistros BR (clk, RegWriteW, reset, RA1D, RA2D, WA3W, ResultW, PCPlus4, RD1, RD2);
+	BancoRegistros BR (clk, RegWriteW, reset, RA1D, RA2D, WA3WO, ResultW, PCPlus4, RD1, RD2);
 	
 	Extend extend (InstD[23:0], ImmSrcD, ExtOut);
 	
@@ -72,6 +73,8 @@ module PasoDatos  (	input logic clk, reset,
 	
 	RegEM regem (clk, ALUResultE, WriteDataE, A3E, ALUOutM, WDMem, A3M);
 	
+	
+	
 	//Seccion de Mem
 	
 	logic [31:0] MemOut;
@@ -82,9 +85,14 @@ module PasoDatos  (	input logic clk, reset,
 	
 	logic [31:0] ReadDataW, ALUOutW;
 	
-	RegMW regmw (clk, MemOut, ALUOutM, A3M, ReadDataW, ALUOutW, WA3W);
+	RegMW regmw (clk, MemOut, ALUOutM, A3M, ReadDataW, ALUOutW, WA3WO);
+	
+	
 
 	Mux2 # (32) mux_wb (ReadDataW, ALUOutW, MemtoRegW, ResultW);
 	
+	assign WA3M = A3M;
+	assign WA3W = WA3WO;
+	assign WA3E = A3E;
 	
 endmodule

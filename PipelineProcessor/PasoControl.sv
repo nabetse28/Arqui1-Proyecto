@@ -6,7 +6,7 @@ module PasoControl (input logic clk,FlushE,reset,
 						  output logic [1:0] RegSrcD, ImmSrcD,
 						  output logic RegWriteW, MemtoRegW,PCSrcW,ALUSrcE, MemWriteM,
 						  output logic MemtoRegE,RegWriteM,BranchTakenE,
-						  output [1:0] ALUControlE);
+						  output logic [1:0] ALUControlE);
 						  
 						  
 // Unidad de Control 

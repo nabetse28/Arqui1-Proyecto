@@ -1,4 +1,5 @@
-module Pipeline_ARM (input logic CLK_50, reset);
+module Pipeline_ARM (input logic CLK_50, reset,
+							output logic [31:0] ALUResult);
 
 
 
@@ -36,7 +37,8 @@ PasoDatos pasodatos(.clk(CLK_50), .reset(reset),
 							.Opcode(Opcode),
 							.Rd(Rd), .CondD(CondD), .RA1E(RA1E), .RA2E(RA2E), .ra1d(ra1d), .ra2d(ra2d),
 							.Funct(Funct),
-							.WA3W(WA3W), .WA3E(WA3E), .WA3M(WA3M));
+							.WA3W(WA3W), .WA3E(WA3E), .WA3M(WA3M),
+							.ALUResult(ALUResult));
 
 logic [1:0] ForwardAE;
 logic [1:0] ForwardBE;

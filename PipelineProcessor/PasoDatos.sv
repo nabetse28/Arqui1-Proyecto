@@ -9,7 +9,8 @@ module PasoDatos  (	input logic clk, reset,
 							output logic [1:0] Opcode,
 							output logic [3:0] Rd, CondD, RA1E, RA2E, ra1d, ra2d,
 							output logic [5:0] Funct,
-							output logic [3:0] WA3W, WA3E, WA3M);
+							output logic [3:0] WA3W, WA3E, WA3M,
+							output logic [31:0] ALUResult);
 	
 	//Seccion de Fetch
 	
@@ -94,5 +95,6 @@ module PasoDatos  (	input logic clk, reset,
 	assign WA3M = A3M;
 	assign WA3W = WA3WO;
 	assign WA3E = A3E;
+	assign ALUResult = ALUResultE;
 	
 endmodule

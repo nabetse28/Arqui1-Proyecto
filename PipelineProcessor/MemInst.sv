@@ -4,9 +4,8 @@ module MemInst (	input logic [31:0] a,
 	logic [31:0] RAM[200:0];
 
 
-	initial
-	//$readmemh("instrucciones.rs",RAM);
-	RAM[0] <= 32'b0;
+initial
+	$readmemh("instrucciones.txt",RAM);
 	assign rd = RAM[a[31:2]]; // word aligned
 
 endmodule

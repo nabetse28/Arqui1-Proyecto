@@ -1,4 +1,4 @@
-module RegDE (	input logic clk, clr,
+module RegDE (	input logic clk, clr,reset,
 					input logic PCSrcD, RegWriteD, MemtoRegD, MemWriteD, BranchD, ALUSrcD,
 					input logic [1:0] ALUControlD, FlagWriteD, 
 					input logic [3:0] CondD, FlagsD,
@@ -13,7 +13,7 @@ module RegDE (	input logic clk, clr,
 
 always_ff @(posedge clk) begin
 
-	if(clr)begin
+	if(clr || reset)begin
 				rdo1 <= 32'b0;
 				rdo2 <= 32'b0;
 				exto <= 32'b0;

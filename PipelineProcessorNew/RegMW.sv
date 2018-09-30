@@ -7,7 +7,7 @@ module RegMW (	input logic clk,
 					output logic [3:0] WA3W);
 					
 
-always_ff @(negedge clk) begin
+always_ff @(posedge clk) begin
 
 		PCSrcW <= PCSrcM;
 		RegWriteW <= RegWriteM;

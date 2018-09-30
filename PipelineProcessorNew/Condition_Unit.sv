@@ -9,7 +9,7 @@ module Condition_Unit(input logic clk, reset,
 							 
 
 logic [1:0] FlagWrite;
-logic [3:0] Flags, Cond;
+logic [3:0] Flags;
 logic CondEx;
 
 flopenr #(2)flagreg1(clk, reset, FlagWrite[1],
@@ -19,7 +19,7 @@ flopenr #(2)flagreg0(clk, reset, FlagWrite[0],
 							
 							
 // write controls are conditional
-condcheck cc(Cond, Flags, CondEx);
+condcheck cc(CondE, Flags, CondEx);
 
 assign FlagWrite = FlagWriteE & {2{CondEx}};
 assign RegWriteM = RegWriteE & CondEx;

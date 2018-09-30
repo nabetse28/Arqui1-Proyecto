@@ -1,11 +1,8 @@
 module Pipeline_ARM (input logic clk, reset,
-							output logic [31:0] InstrD, RD1E, RD2E, ALUResultEA, ALUResultM, ResultW);
+							output logic [31:0] InstrD, RD1E, RD2E, ALUResultEA, ALUResultM, ResultW,WriteDataM);
 
-logic FlushD;
 
-assign FlushD = 1'b0;
-
-logic [31:0] ReadDataW, WriteDataM, PCPlus8, ExtImmE, ALUOutM, ALUOutW;
+logic [31:0] ReadDataW, /*WriteDataM,*/ PCPlus8, ExtImmE, ALUOutM, ALUOutW;
 logic [3:0] RA1E, RA2E, ra1d, ra2d, FlagsD, CondE, FlagsE, WA3E, WA3W, WA3M;
 logic [1:0] ForwardAE, ForwardBE, ALUControlE, FlagWriteE;
 
@@ -18,7 +15,7 @@ Decode decode(	clk, reset, RegWriteW, FlushE,
 					FlagsD,
 					InstrD, PCPlus8, ResultW, WA3W,
 					RD1E, RD2E, ExtImmE,
-					PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,
+					PCSrcD, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,
 					ALUControlE, FlagWriteE, 
 					CondE, FlagsE, WA3E, ra1d, ra2d, RA1E, RA2E);
 
@@ -46,8 +43,11 @@ Memory memory(	clk,
 Mux2 # (32) mux_wb  (ALUOutW, ReadDataW, MemtoRegW, ResultW);
 
 Hazard_Unit hazard(	RA1E, RA2E, WA3M, WA3W, ra1d, ra2d, WA3E,
-							RegWriteM, RegWriteW, MemtoRegE, ForwardAE, ForwardBE,
-							StallF, StallD, FlushE);
+							RegWriteM, RegWriteW, MemtoRegE,
+							PCSrcD,PCSrcE,PCSrcM,PCSrcW, BranchTakenE,
+							ForwardAE, ForwardBE,
+							StallF, StallD, FlushE, FlushD);
+							
 											
 								
 endmodule

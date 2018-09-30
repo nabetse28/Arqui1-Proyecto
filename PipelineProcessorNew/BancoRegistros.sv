@@ -11,7 +11,7 @@ logic [31:0] rf[14:0];
 // write third port on rising edge of clock
 // register 15 reads PC + 8 instead
 
-always_ff @(posedge clk) begin
+always_ff @(negedge clk) begin
 
 	if(reset)begin
 				rf[0] <= 32'b0;

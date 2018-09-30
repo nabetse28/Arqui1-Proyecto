@@ -7,7 +7,7 @@ module RegEM (	input logic clk,
 					output logic [3:0] WA3M);
 					
 
-always_ff @(negedge clk) begin
+always_ff @(posedge clk) begin
 
 		PCSrcM <= PCSrcEA;
 		RegWriteM <= RegWriteEA;
@@ -16,6 +16,7 @@ always_ff @(negedge clk) begin
 		ALUResultM <= ALUResultE;
 		WriteDataM <= WriteDataE;
 		WA3M <= WA3E;
+
 
 end
 

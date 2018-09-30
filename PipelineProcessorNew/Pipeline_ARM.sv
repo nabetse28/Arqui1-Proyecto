@@ -1,63 +1,53 @@
-module Pipeline_ARM (input logic CLK_50, reset,
-							output logic [31:0] ALUResult, TestInst, TestInstD);
+module Pipeline_ARM (input logic clk, reset,
+							output logic [31:0] InstrD, RD1E, RD2E, ALUResultEA, ALUResultM, ResultW);
 
+logic FlushD;
 
+assign FlushD = 1'b0;
 
+logic [31:0] ReadDataW, WriteDataM, PCPlus8, ExtImmE, ALUOutM, ALUOutW;
+logic [3:0] RA1E, RA2E, ra1d, ra2d, FlagsD, CondE, FlagsE, WA3E, WA3W, WA3M;
+logic [1:0] ForwardAE, ForwardBE, ALUControlE, FlagWriteE;
 
-logic [1:0] RegSrcD, ImmSrcD;
-logic RegWriteW, MemtoRegW,PCSrcW,ALUSrcE, MemWriteM;
-logic MemtoRegE,RegWriteM,BranchTakenE;
-logic [1:0] ALUControlE;
+Fetch fetch(clk, reset,
+				ResultW, ALUResultEA,
+				PCSrcW, BranchTakenE, ~StallF, ~StallD, FlushD,
+				InstrD, PCPlus8);
 
-PasoControl pasocontrol(CLK_50,FlushE,reset,
-								Opcode,
-								Rd, CondD,
-								Funct,
-								AluFlags,
-								RegSrcD, ImmSrcD,
-								RegWriteW, MemtoRegW,PCSrcW,ALUSrcE, MemWriteM,
-								MemtoRegE,RegWriteM,BranchTakenE,
-								ALUControlE);
+Decode decode(	clk, reset, RegWriteW, FlushE,
+					FlagsD,
+					InstrD, PCPlus8, ResultW, WA3W,
+					RD1E, RD2E, ExtImmE,
+					PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,
+					ALUControlE, FlagWriteE, 
+					CondE, FlagsE, WA3E, ra1d, ra2d, RA1E, RA2E);
 
+Execute execute(	clk, reset,
+						RD1E, RD2E, ExtImmE, ResultW, ALUOutM,
+						PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,
+						ALUControlE, FlagWriteE, ForwardAE, ForwardBE,
+						CondE, FlagsE, WA3E,
+						PCSrcM, RegWriteM, MemWriteM, MemtoRegM, BranchTakenE,
+						ALUResultM, WriteDataM, ALUResultEA,
+						WA3M, FlagsD);
 
-//logic [3:0] AluFlags;
-//logic [1:0] Opcode;
-//logic [3:0] Rd, CondD;
-logic [3:0] RA1E, RA2E, ra1d, ra2d;
-//logic [5:0] Funct;
-logic [3:0] WA3W, WA3E, WA3M;
+Memory memory(	clk,
+					PCSrcM, RegWriteM, MemtoRegM, MemWriteM,
+					ALUResultM, WriteDataM,
+					WA3M,
+					PCSrcW, RegWriteW, MemtoRegW,
+					ReadDataW, ALUOutW, ALUOutM,
+					WA3W); 
 
-PasoDatos pasodatos(	CLK_50, reset,
-							PCSrcW, BranchTakenE, StallF, StallD, FlushD,
-							RegSrcD, ImmSrcD,
-							RegWriteW,
-							FlushE, ALUSrcE,
-							ForwardAE, ForwardBE, ALUControlE,
-							MemWriteM, MemtoRegW,
-							AluFlags,
-							Opcode,
-							Rd, CondD, RA1E, RA2E, ra1d, ra2d,
-							Funct,
-							WA3W, WA3E, WA3M,
-							ALUResult, TestInst, TestInstD);
+//Writeback
 
-//logic [1:0] ForwardAE;
-//logic [1:0] ForwardBE;
-//logic StallF,StallD,FlushE;
+//logic [31:0] ResultW;
 
-Hazard_Unit hazard_unit(RA1E,
-								RA2E,
-								WA3M,
-								WA3W,
-								ra1d,
-								ra2d,
-								WA3E,
-								RegWriteM,
-								RegWriteW,
-								MemtoRegE,
-								ForwardAE,
-								ForwardBE,
-								StallF, StallD, FlushE);
-								
+Mux2 # (32) mux_wb  (ALUOutW, ReadDataW, MemtoRegW, ResultW);
+
+Hazard_Unit hazard(	RA1E, RA2E, WA3M, WA3W, ra1d, ra2d, WA3E,
+							RegWriteM, RegWriteW, MemtoRegE, ForwardAE, ForwardBE,
+							StallF, StallD, FlushE);
+											
 								
 endmodule

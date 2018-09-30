@@ -9,7 +9,7 @@ module Condition_Unit(input logic clk, reset,
 							 
 
 logic [1:0] FlagWrite;
-logic [3:0] Flags;
+logic [3:0] Flags, Cond;
 logic CondEx;
 
 flopenr #(2)flagreg1(clk, reset, FlagWrite[1],

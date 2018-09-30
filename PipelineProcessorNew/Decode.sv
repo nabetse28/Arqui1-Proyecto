@@ -1,6 +1,7 @@
 module Decode (input logic clk, reset, RegWriteW, FlushE,
 					input logic [3:0] InFlags,
-					input logic [31:0] InstD, PCPlus8, ResultW, WA3W,
+					input logic [31:0] InstD, PCPlus8, ResultW, 
+					input logic [3:0] WA3W,
 					output logic [31:0] RD1E, RD2E, ExtImmE,
 					output logic PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,
 					output logic [1:0] ALUControlE, FlagWriteE, 
@@ -13,6 +14,7 @@ module Decode (input logic clk, reset, RegWriteW, FlushE,
 	logic [3:0] CondD, Rd;
 	logic [5:0] Funct;
 	logic [1:0] Opcode;
+	logic [1:0] RegSrcD, ImmSrcD;
 	
 	assign Opcode = InstD [27:26];
 	assign Funct = InstD [25:20];
@@ -34,7 +36,7 @@ module Decode (input logic clk, reset, RegWriteW, FlushE,
 	logic [1:0] FlagWriteD;
 	logic PCSrcD, RegWriteD,MemtoRegD;
 	logic MemWriteD, BranchD,ALUSrcD;
-	logic [1:0] ALUControlD,ImmSrcD,RegSrcD;
+	logic [1:0] ALUControlD;
 	
 	//unidad de control
 	Control_Unit controlUnit (	Opcode, Funct, Rd,

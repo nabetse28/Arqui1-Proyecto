@@ -4,16 +4,15 @@ module Execute (	input logic clk, reset,
 						input logic [1:0] ALUControlE, FlagWriteE, ForwardAE, ForwardBE,
 						input logic [3:0] CondE, FlagsE, WA3E,
 						output logic PCSrcM, RegWriteM, MemWriteM, MemtoRegM, BranchTakenE,
-						output logic [31:0] ALUResultM, WriteDataM,
-						output [3:0] WA3M, FlagsD);
+						output logic [31:0] ALUResultM, WriteDataM, ALUResultEA,
+						output logic [3:0] WA3M, FlagsD);
 
 	logic [31:0] WriteDataE, Op1, Op2, ALUResultE;
+	logic [3:0] ALUFlags;
 	
 	Mux3 # (32) mux_ra1E (RD1E, ResultW, ALUResultMFB, ForwardAE, Op1);
 	Mux3 # (32) mux_ra2E (RD2E, ResultW, ALUResultMFB, ForwardBE, WriteDataE);
 	Mux2 # (32) mux_op2  (WriteDataE, ExtImmE, ALUSrcE, Op2);
-	
-	logic [1:0] ALUFlags;
 	
 	ALU # (32) alu (Op1, Op2, ALUControlE, ALUFlags, ALUResultE);
 	
@@ -35,6 +34,8 @@ module Execute (	input logic clk, reset,
 					PCSrcM, RegWriteM, MemWriteM, MemtoRegM,
 					ALUResultM, WriteDataM,
 					WA3M);
+					
+	assign ALUResultEA = ALUResultE;
 
 
 endmodule 

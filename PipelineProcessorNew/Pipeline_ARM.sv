@@ -4,7 +4,8 @@ module Pipeline_ARM (input logic clk, reset,
 
 logic [31:0] ReadDataW, /*WriteDataM,*/ PCPlus8, ExtImmE, ALUOutM, ALUOutW;
 logic [3:0] RA1E, RA2E, ra1d, ra2d, FlagsD, CondE, FlagsE, WA3E, WA3W, WA3M;
-logic [1:0] ForwardAE, ForwardBE, ALUControlE, FlagWriteE;
+logic [1:0] ForwardAE, ForwardBE, FlagWriteE;
+logic [2:0] ALUControlE;
 
 Fetch fetch(clk, reset,
 				ResultW, ALUResultEA,

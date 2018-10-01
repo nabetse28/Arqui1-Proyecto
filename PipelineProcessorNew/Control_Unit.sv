@@ -4,7 +4,8 @@ module Control_Unit(input logic [1:0] Op,
 						  output logic [1:0] FlagWriteD,
 						  output logic PCSrcD, RegWriteD,MemtoRegD,
 						  output logic MemWriteD, BranchD,ALUSrcD,
-						  output logic [1:0] ALUControlD,ImmSrcD,RegSrcD);
+						  output logic [2:0] ALUControlD,
+						  output logic [1:0] ImmSrcD,RegSrcD);
 						  
 logic [9:0] controls;
 logic ALUOp;
@@ -55,23 +56,31 @@ always_comb
 	begin // which DP Instr?
 		case(Funct[4:1])
 			4'b0100: 
-				ALUControlD = 2'b00; // ADD
+				ALUControlD = 3'b000; // ADD
 			4'b0010: 
-				ALUControlD = 2'b01; // SUB
+				ALUControlD = 3'b001; // SUB
 			4'b0000: 
-				ALUControlD = 2'b10; // AND
+				ALUControlD = 3'b010; // AND
 			4'b1100: 
-				ALUControlD = 2'b11; // ORR
+				ALUControlD = 3'b011; // ORR
+			4'b0001:
+				ALUControlD = 3'b100; // Multiplicar
+			4'b0011:
+				ALUControlD = 3'b101; // Promedio
+			4'b0101:
+				ALUControlD = 3'b110; // Umbral
+			4'b0111:
+				ALUControlD = 3'b111; // Shift left
 			default: 
-				ALUControlD = 2'bx; // unimplemented
+				ALUControlD = 3'bx; // unimplemented
 		endcase
 		// update flags if S bit is set (C & V only for arith)
 		FlagWriteD[1] = Funct[0];
-		FlagWriteD[0] = Funct[0] & (ALUControlD == 2'b00 | ALUControlD == 2'b01);
+		FlagWriteD[0] = Funct[0] & (ALUControlD == 3'b000 | ALUControlD == 3'b001);
 		end 
 		else 
 		begin
-			ALUControlD = 2'b00; // add for non-DP instructions
+			ALUControlD = 3'b000; // add for non-DP instructions
 			FlagWriteD = 2'b00; // don't update Flags
 		end
 

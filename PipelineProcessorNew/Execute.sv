@@ -1,7 +1,8 @@
 module Execute (	input logic clk, reset,
 						input logic [31:0] RD1E, RD2E, ExtImmE, ResultW, ALUResultMFB,
 						input logic PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,
-						input logic [1:0] ALUControlE, FlagWriteE, ForwardAE, ForwardBE,
+						input logic [2:0] ALUControlE, 
+						input logic [1:0] FlagWriteE, ForwardAE, ForwardBE,
 						input logic [3:0] CondE, FlagsE, WA3E,
 						output logic PCSrcM, RegWriteM, MemWriteM, MemtoRegM, BranchTakenE,
 						output logic [31:0] ALUResultM, WriteDataM, ALUResultEA,
@@ -14,7 +15,7 @@ module Execute (	input logic clk, reset,
 	Mux3 # (32) mux_ra2E (RD2E, ResultW, ALUResultMFB, ForwardBE, WriteDataE);
 	Mux2 # (32) mux_op2  (WriteDataE, ExtImmE, ALUSrcE, Op2);
 	
-	ALU # (32) alu (Op1, Op2, ALUControlE, ALUFlags, ALUResultE);
+	SuperALU alu (Op1, Op2, ALUControlE, ALUFlags, ALUResultE);
 	
 	logic PCSrcEA, RegWriteEA, MemWriteEA;
 	

@@ -1,13 +1,15 @@
 module RegDE (	input logic clk, clr,reset,
 					input logic PCSrcD, RegWriteD, MemtoRegD, MemWriteD, BranchD, ALUSrcD,
-					input logic [1:0] ALUControlD, FlagWriteD, 
+					input logic [2:0] ALUControlD, 
+					input logic [1:0] FlagWriteD, 
 					input logic [3:0] CondD, FlagsD,
 					input logic [31:0] rd1, rd2, ext,
 					input logic [3:0] a3, RA1D, RA2D,
 					output logic [31:0] rdo1, rdo2, exto,
 					output logic [3:0] ao3, RA1E, RA2E,
 					output logic PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,
-					output logic [1:0] ALUControlE, FlagWriteE, 
+					output logic [2:0] ALUControlE, 
+					output logic [1:0] FlagWriteE, 
 					output logic [3:0] CondE, FlagsE);
 					
 
@@ -26,7 +28,7 @@ always_ff @(posedge clk) begin
 				MemWriteE <= 1'b0;
 				BranchE <= 1'b0;
 				ALUSrcE <= 1'b0;
-				ALUControlE <= 2'b0;
+				ALUControlE <= 3'b0;
 				FlagWriteE <= 2'b0;
 				CondE <= 4'b0;
 				FlagsE <= 4'b0;

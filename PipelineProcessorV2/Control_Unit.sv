@@ -3,12 +3,12 @@ module Control_Unit(input logic [1:0] Op,
 						  input logic [3:0] Rd,
 						  output logic [1:0] FlagWriteD,
 						  output logic PCSrcD, RegWriteD,MemtoRegD,
-						  output logic MemWriteD, BranchD,ALUSrcD,
+						  output logic MemWriteD, BranchD,ALUSrcD, Stuck,
 						  output logic [2:0] ALUControlD,
 						  output logic [1:0] ImmSrcD,RegSrcD);
 						  
-logic [9:0] controls;
-logic ALUOp;
+logic [10:0] controls;
+logic ALUOp, Stucktemp;
 
 
 //Main Decoder
@@ -20,36 +20,39 @@ always_comb
 			//Data Processing immediate
 			if(Funct[5])
 			begin 
-				controls = 10'b0000101001;
+				controls = 11'b00000101001;
 			end
 			//Data Processing Register
 			else
 			begin
-				controls = 10'b0000001001;
+				controls = 11'b00000001001;
 			end
 		2'b01:
 			//LDR
 			if(Funct[0])
 			begin
-				controls = 10'b0001111000;
+				controls = 11'b00001111000;
 			end
 			//STR
 			else
 			begin
-				controls = 10'b1001110100;
+				controls = 11'b01001110100;
 			end
+		
 		2'b10:
 			//B
-			controls = 10'b0110100010;
+			controls = 11'b00110100010;
 			
-		default:
-			//Unimplemented
-			controls = 10'bx;
+		2'b11:
+			//Stuck: 1110 1101 1010 0000 0000 0000
+			controls = 11'b10000001001;
+
 			
-		endcase
+	endcase
 		
-assign {RegSrcD, ImmSrcD, ALUSrcD, MemtoRegD,
+assign {Stuck, RegSrcD, ImmSrcD, ALUSrcD, MemtoRegD,
 RegWriteD, MemWriteD, BranchD, ALUOp} = controls;
+
 
 always_comb
 	if (ALUOp) 

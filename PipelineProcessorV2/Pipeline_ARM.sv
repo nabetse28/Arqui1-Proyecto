@@ -1,6 +1,6 @@
-module Pipeline_ARM (input logic clk, reset,
+module Pipeline_ARM (input logic clk50, reset, go,
 							output logic [31:0] InstrD, ALUResultEA, ALUResultM, ResultW, WriteDataM,
-							output logic V_SyncOut, H_SyncOut, and_enable,
+							output logic V_SyncOut, H_SyncOut, and_enable,Stuck,clock_vga,vga_sync,
 							output logic [7:0] RedOut, GreenOut, BlueOut);
 
 
@@ -8,15 +8,23 @@ logic [31:0] ReadDataW, /*WriteDataM,*/ PCPlus8, ExtImmE, ALUOutM, ALUOutW, RD1E
 logic [3:0] RA1E, RA2E, ra1d, ra2d, FlagsD, CondE, FlagsE, WA3E, WA3W, WA3M;
 logic [1:0] ForwardAE, ForwardBE, FlagWriteE;
 logic [2:0] ALUControlE;
+logic clk;
+
+//Hard stop circuit
+
+StopCounter stopcount (Stuck, go, StopCont);
+
+assign clk = StopCont ? 0 : clk50;
 
 //VGA temp
 
 logic [15:0] VGAArd;
 logic [9:0] ColumnOut, RowOut;
-logic clock_vga = 1;
 
-always @(posedge clk) begin
-	if(clk == 1'b1)
+assign vga_sync = 0;
+
+always @(posedge clk50) begin
+	if(clk50 == 1'b1)
 		begin
 			clock_vga = ~clock_vga;
 		end
@@ -54,7 +62,7 @@ Decode decode(	clk, reset, RegWriteW, FlushE,
 					FlagsD,
 					InstrD, PCPlus8, ResultW, WA3W,
 					RD1E, RD2E, ExtImmE,
-					PCSrcD, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,
+					PCSrcD, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,Stuck,
 					ALUControlE, FlagWriteE, 
 					CondE, FlagsE, WA3E, ra1d, ra2d, RA1E, RA2E);
 

@@ -6,7 +6,7 @@ module Umbral (input logic [31 : 0] Op_A,
 		
 			if (Op_A >= Op_B)
 			begin
-				Result = 32'b1;
+				Result = 32'hffffffff;
 			end
 			
 			else

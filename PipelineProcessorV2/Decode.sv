@@ -3,7 +3,7 @@ module Decode (input logic clk, reset, RegWriteW, FlushE,
 					input logic [31:0] InstD, PCPlus8, ResultW, 
 					input logic [3:0] WA3W,
 					output logic [31:0] RD1E, RD2E, ExtImmE,
-					output logic PCSrcD, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE,
+					output logic PCSrcD, PCSrcE, RegWriteE, MemtoRegE, MemWriteE, BranchE, ALUSrcE, Stuck,
 					output logic [2:0] ALUControlE, 
 					output logic [1:0] FlagWriteE, 
 					output logic [3:0] CondE, FlagsE, WA3E, ra1d, ra2d, RA1E, RA2E);
@@ -31,7 +31,7 @@ module Decode (input logic clk, reset, RegWriteW, FlushE,
 	Control_Unit controlUnit (	Opcode, Funct, Rd,
 										FlagWriteD,
 										PCSrcD, RegWriteD,MemtoRegD,
-										MemWriteD, BranchD,ALUSrcD,
+										MemWriteD, BranchD,ALUSrcD, Stuck,
 										ALUControlD,ImmSrcD,RegSrcD);
 	
 	Mux2 # (4) mux_ra1 (InstD[19:16], 4'b1111, RegSrcD[0], RA1D);

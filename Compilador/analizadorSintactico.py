@@ -43,6 +43,7 @@ def p_instMOV(p):
     p[4] = int(p[5])
     p[0] = {1:"MOV", 2:p[2], 3:p[5], 4:"END"}
 
+<<<<<<< HEAD
 def p_instSUBS(p):
     '''inst : SUBS REG COMMA REG COMMA REG'''
     p[0] = {1:"SUBS", 2:p[2], 3:p[4], 5:p[6],5:"END"}
@@ -92,6 +93,48 @@ def p_instAddImm1(p):#LISTO##LISTO#
     p[6]=int(p[7])
     p[0] = {1: "ADDI", 2: p[2], 3:p[4], 4:p[7],5:"END"}
 
+=======
+def p_instPRM(p):
+    '''inst : PRM REG COMMA REG'''
+    p[0] = {1:"PRM", 2:p[2], 3:p[4], 4:"END"}
+
+def p_instUMB(p):
+    '''inst : UMB REG COMMA REG COMMA NUM NUMBER'''
+    p[6] = int(p[7])
+    p[0] = {1:"UMB", 2:p[2], 3:p[4], 4:p[7] , 5:"END"}
+
+def p_instORR(p):
+    '''inst : ORR REG COMMA REG COMMA REG'''
+    p[0] = {1:"ORR", 2:p[2], 3:p[4], 4:p[6], 5:"END"}
+
+def p_instAND(p):
+    '''inst : AND REG COMMA REG COMMA REG'''
+    p[0] = {1:"AND", 2:p[2], 3:p[4], 4:p[6], 5:"END"}
+
+def p_instANDImm(p):
+    '''inst : AND REG COMMA REG COMMA NUM NUMBER'''
+    p[6] = int(p[7])
+    p[0] = {1:"ANDI", 2:p[2], 3:p[4], 4:p[6], 5:"END"}
+
+def p_instLSL(p):
+    '''inst : LSL REG COMMA REG COMMA NUM NUMBER'''
+    p[6] = int(p[7])
+    p[0] = {1:"LSL", 2:p[2], 3:p[4], 4:p[6], 5:"END"}
+
+def p_instAdd(p): #LISTO##LISTO#
+    '''inst : ADD REG COMMA REG COMMA REG'''
+    p[0] = {1: "ADD", 2: p[2], 3:p[4], 4:p[6],5:"END"}
+    
+def p_instXor(p): #LISTO##LISTO#
+    '''inst : EOR REG COMMA REG COMMA REG'''
+    p[0] = {1: "EOR", 2: p[2], 3:p[4], 4:p[6],5:"END"}
+
+def p_instAddImm1(p):#LISTO##LISTO#
+    '''inst : ADD REG COMMA REG COMMA NUM NUMBER'''
+    p[6]=int(p[7])
+    p[0] = {1: "ADDI", 2: p[2], 3:p[4], 4:p[7],5:"END"}
+
+>>>>>>> dfdba57908b97b96622a4e6564238ea08eee88e9
 def p_instSub(p):#LISTO##LISTO#
     '''inst : SUB REG COMMA REG COMMA REG'''
     p[0] = {1: "SUB", 2: p[2], 3:p[4], 4:p[6],5:"END"}

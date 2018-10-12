@@ -13,7 +13,11 @@ isComment = 0
 tokens = ['ID','RPC','LPC','NUMBER','REG','COMMA','MINUS','NUM','DP']
 
 
+<<<<<<< HEAD
 kword = ['ADD','SUB','MUL','B','BEQ','BNE','MOV','NOP','EOR','STR','LDR','CMP','ORR','AND','LSL','BGT','BLT','PRM','UMB','SUBS']
+=======
+kword = ['ADD','SUB','MUL','B','BEQ','BNE','MOV','NOP','EOR','STR','LDR','CMP','ORR','AND','LSL','BGT','BLT','PRM','UMB']
+>>>>>>> dfdba57908b97b96622a4e6564238ea08eee88e9
 tokens = tokens+ kword
 ## 'ORR','AND','LSL','BGT','BLT','PRM','UMB'
 t_RPC = r'\]'
@@ -23,6 +27,7 @@ t_MINUS = r'\-'
 t_NUM = r'\#'
 t_DP = r'\:'
 
+<<<<<<< HEAD
 def t_SUBS(t):
     r'SUBS|subs'
     t.value = t.value.upper()
@@ -38,6 +43,18 @@ def t_UMB(t):
     t.value = t.value.upper()
     return t
 
+=======
+def t_PRM(t):
+    r'PRM|prm'
+    t.value = t.value.upper()
+    return t
+
+def t_UMB(t):
+    r'UMB|umb'
+    t.value = t.value.upper()
+    return t
+
+>>>>>>> dfdba57908b97b96622a4e6564238ea08eee88e9
 def t_ORR(t):
     r'ORR|orr'
     t.value = t.value.upper()

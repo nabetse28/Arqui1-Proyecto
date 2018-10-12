@@ -31,22 +31,17 @@ VGAController vga (	reset, clock_vga,
 							and_enable);
 
 	always_comb begin
-		//Si se desea hacer una resta con el sumador
-		if (RowOut > 32'd200 || ColumnOut > 32'd200)
+
+		if ((RowOut > 10'd200) || (ColumnOut > 10'd200))
 		begin
-			sum_cin = 1;
-			temp_B = ~Op_B;
+			VGAArd = 16'd65535;
 		end
-		//Si se deasea hacer una suma con el sumador
+
 		else
 		begin
-			sum_cin = 0;
-			temp_B = Op_B;
+			VGAArd = RowOut + ColumnOut * 10'd200;
 		end
 	end
-	
-							
-assign VGAArd = RowOut + ColumnOut*10'd640;
 
 
 

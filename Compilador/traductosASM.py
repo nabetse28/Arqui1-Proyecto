@@ -380,7 +380,7 @@ def traducir(l):
                     i+=ext(comp2(abs(imm)),24,'1')
             cM+=[i]
         elif(x[0]=='BLTT'):
-            i='1101'#cond
+            i='1011'#cond
             i+='10'#op'
             i+='10'#funct'
             if not(x[1] in list(tags.keys())):

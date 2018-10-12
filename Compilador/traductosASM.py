@@ -73,6 +73,7 @@ def traducir(l):
             i+= '0000'
             i+=regs[x[1]]
             i+='0000'
+            print(x[2])
             i+=ext(bin(abs(int(x[2])))[2:],8,'0')
             cM+=[i]
         elif(x[0]=='AND'):
@@ -146,6 +147,7 @@ def traducir(l):
             i+=regs[x[2]]
             i+=regs[x[1]]
             i+='0000'
+            print(x[3])
             i+=ext(bin(abs(int(x[3])))[2:],8,'0')
             cM+=[i]
         elif(x[0]=='PRM'):
@@ -163,6 +165,23 @@ def traducir(l):
             cM+=[i]
         elif(x[0]=='LSL'):
             i='111000101110'
+            i+=regs[x[2]]
+            i+=regs[x[1]]
+            i+='0000'
+            i+=ext(bin(abs(int(x[3])))[2:],8,'0')
+            cM+=[i]
+        elif(x[0]=='SUBS'):
+            i='111000000101'
+            i+=regs[x[2]]
+            i+=regs[x[1]]
+            i+='00000000'
+            i+=regs[x[3]]
+            cM+=[i]
+        elif(x[0]=='SUBSI'):
+            if(int(x[3])>=0):
+                i='111000100101'
+            else:
+                i='111000101001'
             i+=regs[x[2]]
             i+=regs[x[1]]
             i+='0000'
@@ -380,7 +399,7 @@ def traducir(l):
                     i+=ext(comp2(abs(imm)),24,'1')
             cM+=[i]
         elif(x[0]=='BLTT'):
-            i='1101'#cond
+            i='1011'#cond
             i+='10'#op'
             i+='10'#funct'
             if not(x[1] in list(tags.keys())):

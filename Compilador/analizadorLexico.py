@@ -13,12 +13,9 @@ isComment = 0
 tokens = ['ID','RPC','LPC','NUMBER','REG','COMMA','MINUS','NUM','DP']
 
 
-kwords = ['ADD','SUB','MUL','B','BEQ','BNE','BGT',
-          'BLT','CMP','STR','LDR',
-          'MOV','AND','ORR','PRM','UMB','LSL']
-
-tokens = tokens + kwords
-
+kword = ['ADD','SUB','MUL','B','BEQ','BNE','MOV','NOP','EOR','STR','LDR','CMP','ORR','AND','LSL','BGT','BLT','PRM','UMB','SUBS']
+tokens = tokens+ kword
+## 'ORR','AND','LSL','BGT','BLT','PRM','UMB'
 t_RPC = r'\]'
 t_LPC = r'\['
 t_COMMA = r','
@@ -26,69 +23,8 @@ t_MINUS = r'\-'
 t_NUM = r'\#'
 t_DP = r'\:'
 
-def t_ADD(t):
-    r'ADD|add'
-    t.value = t.value.upper()
-    return t
-
-def t_SUB(t):
-    r'SUB|sub'
-    t.value = t.value.upper()
-    return t
-
-def t_MUL(t):
-    r'MUL|mul'
-    t.value = t.value.upper()
-    return t
-def t_B(t):
-    r'B|b'
-    t.value = t.value.upper()
-    return t
-def t_BEQ(t):
-    r'BEQ|beq'
-    t.value = t.value.upper()
-    return t
-def t_BNE(t):
-    r'BNE|bne'
-    t.value = t.value.upper()
-    return t
-def t_BGT(t):
-    r'BGT|bgt'
-    t.value = t.value.upper()
-    return t
-def t_BLT(t):
-    r'BLT|blt'
-    t.value = t.value.upper()
-    return t
-
-def t_CMP(t):
-    r'CMP|cmp'
-    t.value = t.value.upper()
-    return t
-
-def t_STR(t):
-    r'STR|str'
-    t.value = t.value.upper()
-    return t
-
-def t_LDR(t):
-    r'LDR|ldr'
-    t.value = t.value.upper()
-    return t
-
-
-def t_MOV(t):
-    r'MOV|mov'
-    t.value = t.value.upper()
-    return t
-
-def t_ORR(t):
-    r'ORR|orr'
-    t.value = t.value.upper()
-    return t
-
-def t_AND(t):
-    r'AND|and'
+def t_SUBS(t):
+    r'SUBS|subs'
     t.value = t.value.upper()
     return t
 
@@ -102,8 +38,91 @@ def t_UMB(t):
     t.value = t.value.upper()
     return t
 
+def t_ORR(t):
+    r'ORR|orr'
+    t.value = t.value.upper()
+    return t
+
+def t_AND(t):
+    r'AND|and'
+    t.value = t.value.upper()
+    return t
+
 def t_LSL(t):
     r'LSL|lsl'
+    t.value = t.value.upper()
+    return t
+
+def t_BGT(t):
+    r'BGT|bgt'
+    t.value = t.value.upper()
+    return t
+
+def t_BLT(t):
+    r'BLT|blt'
+    t.value = t.value.upper()
+    return t
+
+def t_ADD(t):
+    r'ADD|add'
+    t.value = t.value.upper()
+    return t
+
+
+def t_SUB(t):
+    r'SUB|sub'
+    t.value = t.value.upper()
+    return t
+
+def t_MUL(t):
+    r'MUL|mul'
+    t.value = t.value.upper()
+    return t
+
+def t_MOV(t):
+    r'MOV|mov'
+    t.value = t.value.upper()
+    return t
+
+def t_CMP(t):
+    r'CMP|cmp'
+    t.value = t.value.upper()
+    return t
+
+def t_EOR(t):
+    r'EOR|eor'
+    t.value = t.value.upper()
+    return t
+
+def t_NOP(t):
+    r'NOP|nop'
+    t.value = t.value.upper()
+    return t
+
+def t_STR(t):
+    r'STR|str'
+    t.value = t.value.upper()
+    return t
+
+def t_LDR(t):
+    r'LDR|ldr'
+    t.value = t.value.upper()
+    return t
+
+def t_BEQ(t):
+    r'BEQ|beq'
+    t.value = t.value.upper()
+    return t
+
+def t_BNE(t):
+    r'BNE|bne'
+    t.value = t.value.upper()
+    return t
+
+
+
+def t_B(t):
+    r'B|b'
     t.value = t.value.upper()
     return t
 
@@ -139,6 +158,10 @@ def t_nonespace(t):
 def getErrL():
     global errL
     return errL
+
+
+
+
 
 
 

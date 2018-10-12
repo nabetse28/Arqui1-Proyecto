@@ -1,72 +1,79 @@
-Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+Created by PLY version 3.0 (http://www.dabeaz.com/ply)
 
 Grammar
 
-Rule 0     S' -> program
-Rule 1     program -> block
-Rule 2     block -> inst block
-Rule 3     block -> empty
-Rule 4     inst -> ID DP
-Rule 5     inst -> MOV REG COMMA NUM NUMBER
-Rule 6     inst -> ADD REG COMMA REG COMMA REG
-Rule 7     inst -> ADD REG COMMA REG COMMA NUM NUMBER
-Rule 8     inst -> SUB REG COMMA REG COMMA REG
-Rule 9     inst -> SUB REG COMMA REG COMMA NUM NUMBER
-Rule 10    inst -> MUL REG COMMA REG COMMA REG
-Rule 11    inst -> MUL REG COMMA REG COMMA NUM NUMBER
-Rule 12    inst -> AND REG COMMA REG COMMA REG
-Rule 13    inst -> AND REG COMMA REG COMMA NUM NUMBER
-Rule 14    inst -> ORR REG COMMA REG COMMA REG
+Rule 1     S' -> program
+Rule 2     program -> block
+Rule 3     block -> inst block
+Rule 4     block -> empty
+Rule 5     inst -> ID DP
+Rule 6     inst -> NOP
+Rule 7     inst -> MOV REG COMMA NUM NUMBER
+Rule 8     inst -> SUBS REG COMMA REG COMMA REG
+Rule 9     inst -> SUBS REG COMMA REG COMMA NUM NUMBER
+Rule 10    inst -> PRM REG COMMA REG
+Rule 11    inst -> UMB REG COMMA REG COMMA NUM NUMBER
+Rule 12    inst -> ORR REG COMMA REG COMMA REG
+Rule 13    inst -> AND REG COMMA REG COMMA REG
+Rule 14    inst -> AND REG COMMA REG COMMA NUM NUMBER
 Rule 15    inst -> LSL REG COMMA REG COMMA NUM NUMBER
-Rule 16    inst -> PRM REG COMMA REG
-Rule 17    inst -> UMB REG COMMA REG COMMA NUM NUMBER
-Rule 18    inst -> CMP REG COMMA REG
-Rule 19    inst -> CMP REG COMMA NUM NUMBER
-Rule 20    inst -> LDR REG COMMA LPC REG RPC COMMA REG
-Rule 21    inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG
-Rule 22    inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER
-Rule 23    inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC
-Rule 24    inst -> LDR REG COMMA LPC REG RPC
-Rule 25    inst -> STR REG COMMA LPC REG RPC COMMA REG
-Rule 26    inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC
-Rule 27    inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG
-Rule 28    inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER
-Rule 29    inst -> STR REG COMMA LPC REG RPC
-Rule 30    inst -> B ID
-Rule 31    inst -> BEQ ID
-Rule 32    inst -> BNE ID
-Rule 33    inst -> BGT ID
-Rule 34    inst -> BLT ID
-Rule 35    empty -> <empty>
+Rule 16    inst -> ADD REG COMMA REG COMMA REG
+Rule 17    inst -> EOR REG COMMA REG COMMA REG
+Rule 18    inst -> ADD REG COMMA REG COMMA NUM NUMBER
+Rule 19    inst -> SUB REG COMMA REG COMMA REG
+Rule 20    inst -> SUB REG COMMA REG COMMA NUM NUMBER
+Rule 21    inst -> MUL REG COMMA REG COMMA REG
+Rule 22    inst -> MUL REG COMMA REG COMMA NUM NUMBER
+Rule 23    inst -> CMP REG COMMA REG
+Rule 24    inst -> CMP REG COMMA NUM NUMBER
+Rule 25    inst -> LDR REG COMMA LPC REG RPC COMMA REG
+Rule 26    inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG
+Rule 27    inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER
+Rule 28    inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC
+Rule 29    inst -> LDR REG COMMA LPC REG RPC
+Rule 30    inst -> STR REG COMMA LPC REG RPC COMMA REG
+Rule 31    inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC
+Rule 32    inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG
+Rule 33    inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER
+Rule 34    inst -> STR REG COMMA LPC REG RPC
+Rule 35    inst -> B ID
+Rule 36    inst -> BEQ ID
+Rule 37    inst -> BNE ID
+Rule 38    inst -> BGT ID
+Rule 39    inst -> BLT ID
+Rule 40    empty -> <empty>
 
 Terminals, with rules where they appear
 
-ADD                  : 6 7
+ADD                  : 15 17
 AND                  : 12 13
-B                    : 30
-BEQ                  : 31
-BGT                  : 33
-BLT                  : 34
-BNE                  : 32
-CMP                  : 18 19
-COMMA                : 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 17 17 18 19 20 20 21 21 22 22 23 23 24 25 25 26 26 27 27 28 28 29
+B                    : 34
+BEQ                  : 35
+BGT                  : 37
+BLT                  : 38
+BNE                  : 36
+CMP                  : 22 23
+COMMA                : 6 7 7 8 8 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 23 24 24 25 25 26 26 27 27 28 29 29 30 30 31 31 32 32 33
 DP                   : 4
-ID                   : 4 30 31 32 33 34
-LDR                  : 20 21 22 23 24
-LPC                  : 20 21 22 23 24 25 26 27 28 29
-LSL                  : 15
-MINUS                : 21 27
-MOV                  : 5
-MUL                  : 10 11
-NUM                  : 5 7 9 11 13 15 17 19 22 23 26 28
-NUMBER               : 5 7 9 11 13 15 17 19 22 23 26 28
-ORR                  : 14
-PRM                  : 16
-REG                  : 5 6 6 6 7 7 8 8 8 9 9 10 10 10 11 11 12 12 12 13 13 14 14 14 15 15 16 16 17 17 18 18 19 20 20 20 21 21 21 22 22 23 23 24 24 25 25 25 26 26 27 27 27 28 28 29 29
-RPC                  : 20 21 22 23 24 25 26 27 28 29
-STR                  : 25 26 27 28 29
-SUB                  : 8 9
-UMB                  : 17
+EOR                  : 16
+ID                   : 4 34 35 36 37 38
+LDR                  : 24 25 26 27 28
+LPC                  : 24 25 26 27 28 29 30 31 32 33
+LSL                  : 14
+MINUS                : 25 31
+MOV                  : 6
+MUL                  : 20 21
+NOP                  : 5
+NUM                  : 6 8 10 13 14 17 19 21 23 26 27 30 32
+NUMBER               : 6 8 10 13 14 17 19 21 23 26 27 30 32
+ORR                  : 11
+PRM                  : 9
+REG                  : 6 7 7 7 8 8 9 9 10 10 11 11 11 12 12 12 13 13 14 14 15 15 15 16 16 16 17 17 18 18 18 19 19 20 20 20 21 21 22 22 23 24 24 24 25 25 25 26 26 27 27 28 28 29 29 29 30 30 31 31 31 32 32 33 33
+RPC                  : 24 25 26 27 28 29 30 31 32 33
+STR                  : 29 30 31 32 33
+SUB                  : 18 19
+SUBS                 : 7 8
+UMB                  : 10
 error                : 
 
 Nonterminals, with rules where they appear
@@ -85,57 +92,64 @@ state 0
     (2) block -> . inst block
     (3) block -> . empty
     (4) inst -> . ID DP
-    (5) inst -> . MOV REG COMMA NUM NUMBER
-    (6) inst -> . ADD REG COMMA REG COMMA REG
-    (7) inst -> . ADD REG COMMA REG COMMA NUM NUMBER
-    (8) inst -> . SUB REG COMMA REG COMMA REG
-    (9) inst -> . SUB REG COMMA REG COMMA NUM NUMBER
-    (10) inst -> . MUL REG COMMA REG COMMA REG
-    (11) inst -> . MUL REG COMMA REG COMMA NUM NUMBER
+    (5) inst -> . NOP
+    (6) inst -> . MOV REG COMMA NUM NUMBER
+    (7) inst -> . SUBS REG COMMA REG COMMA REG
+    (8) inst -> . SUBS REG COMMA REG COMMA NUM NUMBER
+    (9) inst -> . PRM REG COMMA REG
+    (10) inst -> . UMB REG COMMA REG COMMA NUM NUMBER
+    (11) inst -> . ORR REG COMMA REG COMMA REG
     (12) inst -> . AND REG COMMA REG COMMA REG
     (13) inst -> . AND REG COMMA REG COMMA NUM NUMBER
-    (14) inst -> . ORR REG COMMA REG COMMA REG
-    (15) inst -> . LSL REG COMMA REG COMMA NUM NUMBER
-    (16) inst -> . PRM REG COMMA REG
-    (17) inst -> . UMB REG COMMA REG COMMA NUM NUMBER
-    (18) inst -> . CMP REG COMMA REG
-    (19) inst -> . CMP REG COMMA NUM NUMBER
-    (20) inst -> . LDR REG COMMA LPC REG RPC COMMA REG
-    (21) inst -> . LDR REG COMMA LPC REG RPC COMMA MINUS REG
-    (22) inst -> . LDR REG COMMA LPC REG RPC COMMA NUM NUMBER
-    (23) inst -> . LDR REG COMMA LPC REG COMMA NUM NUMBER RPC
-    (24) inst -> . LDR REG COMMA LPC REG RPC
-    (25) inst -> . STR REG COMMA LPC REG RPC COMMA REG
-    (26) inst -> . STR REG COMMA LPC REG COMMA NUM NUMBER RPC
-    (27) inst -> . STR REG COMMA LPC REG RPC COMMA MINUS REG
-    (28) inst -> . STR REG COMMA LPC REG RPC COMMA NUM NUMBER
-    (29) inst -> . STR REG COMMA LPC REG RPC
-    (30) inst -> . B ID
-    (31) inst -> . BEQ ID
-    (32) inst -> . BNE ID
-    (33) inst -> . BGT ID
-    (34) inst -> . BLT ID
-    (35) empty -> .
+    (14) inst -> . LSL REG COMMA REG COMMA NUM NUMBER
+    (15) inst -> . ADD REG COMMA REG COMMA REG
+    (16) inst -> . EOR REG COMMA REG COMMA REG
+    (17) inst -> . ADD REG COMMA REG COMMA NUM NUMBER
+    (18) inst -> . SUB REG COMMA REG COMMA REG
+    (19) inst -> . SUB REG COMMA REG COMMA NUM NUMBER
+    (20) inst -> . MUL REG COMMA REG COMMA REG
+    (21) inst -> . MUL REG COMMA REG COMMA NUM NUMBER
+    (22) inst -> . CMP REG COMMA REG
+    (23) inst -> . CMP REG COMMA NUM NUMBER
+    (24) inst -> . LDR REG COMMA LPC REG RPC COMMA REG
+    (25) inst -> . LDR REG COMMA LPC REG RPC COMMA MINUS REG
+    (26) inst -> . LDR REG COMMA LPC REG RPC COMMA NUM NUMBER
+    (27) inst -> . LDR REG COMMA LPC REG COMMA NUM NUMBER RPC
+    (28) inst -> . LDR REG COMMA LPC REG RPC
+    (29) inst -> . STR REG COMMA LPC REG RPC COMMA REG
+    (30) inst -> . STR REG COMMA LPC REG COMMA NUM NUMBER RPC
+    (31) inst -> . STR REG COMMA LPC REG RPC COMMA MINUS REG
+    (32) inst -> . STR REG COMMA LPC REG RPC COMMA NUM NUMBER
+    (33) inst -> . STR REG COMMA LPC REG RPC
+    (34) inst -> . B ID
+    (35) inst -> . BEQ ID
+    (36) inst -> . BNE ID
+    (37) inst -> . BGT ID
+    (38) inst -> . BLT ID
+    (39) empty -> .
 
     ID              shift and go to state 5
-    MOV             shift and go to state 6
-    ADD             shift and go to state 7
-    SUB             shift and go to state 8
-    MUL             shift and go to state 9
-    AND             shift and go to state 10
+    NOP             shift and go to state 6
+    MOV             shift and go to state 7
+    SUBS            shift and go to state 8
+    PRM             shift and go to state 9
+    UMB             shift and go to state 10
     ORR             shift and go to state 11
-    LSL             shift and go to state 12
-    PRM             shift and go to state 13
-    UMB             shift and go to state 14
-    CMP             shift and go to state 15
-    LDR             shift and go to state 16
-    STR             shift and go to state 17
-    B               shift and go to state 18
-    BEQ             shift and go to state 19
-    BNE             shift and go to state 20
-    BGT             shift and go to state 21
-    BLT             shift and go to state 22
-    $end            reduce using rule 35 (empty -> .)
+    AND             shift and go to state 12
+    LSL             shift and go to state 13
+    ADD             shift and go to state 14
+    EOR             shift and go to state 15
+    SUB             shift and go to state 16
+    MUL             shift and go to state 17
+    CMP             shift and go to state 18
+    LDR             shift and go to state 19
+    STR             shift and go to state 20
+    B               shift and go to state 21
+    BEQ             shift and go to state 22
+    BNE             shift and go to state 23
+    BGT             shift and go to state 24
+    BLT             shift and go to state 25
+    $end            reduce using rule 39 (empty -> .)
 
     program                        shift and go to state 1
     block                          shift and go to state 2
@@ -161,60 +175,67 @@ state 3
     (2) block -> . inst block
     (3) block -> . empty
     (4) inst -> . ID DP
-    (5) inst -> . MOV REG COMMA NUM NUMBER
-    (6) inst -> . ADD REG COMMA REG COMMA REG
-    (7) inst -> . ADD REG COMMA REG COMMA NUM NUMBER
-    (8) inst -> . SUB REG COMMA REG COMMA REG
-    (9) inst -> . SUB REG COMMA REG COMMA NUM NUMBER
-    (10) inst -> . MUL REG COMMA REG COMMA REG
-    (11) inst -> . MUL REG COMMA REG COMMA NUM NUMBER
+    (5) inst -> . NOP
+    (6) inst -> . MOV REG COMMA NUM NUMBER
+    (7) inst -> . SUBS REG COMMA REG COMMA REG
+    (8) inst -> . SUBS REG COMMA REG COMMA NUM NUMBER
+    (9) inst -> . PRM REG COMMA REG
+    (10) inst -> . UMB REG COMMA REG COMMA NUM NUMBER
+    (11) inst -> . ORR REG COMMA REG COMMA REG
     (12) inst -> . AND REG COMMA REG COMMA REG
     (13) inst -> . AND REG COMMA REG COMMA NUM NUMBER
-    (14) inst -> . ORR REG COMMA REG COMMA REG
-    (15) inst -> . LSL REG COMMA REG COMMA NUM NUMBER
-    (16) inst -> . PRM REG COMMA REG
-    (17) inst -> . UMB REG COMMA REG COMMA NUM NUMBER
-    (18) inst -> . CMP REG COMMA REG
-    (19) inst -> . CMP REG COMMA NUM NUMBER
-    (20) inst -> . LDR REG COMMA LPC REG RPC COMMA REG
-    (21) inst -> . LDR REG COMMA LPC REG RPC COMMA MINUS REG
-    (22) inst -> . LDR REG COMMA LPC REG RPC COMMA NUM NUMBER
-    (23) inst -> . LDR REG COMMA LPC REG COMMA NUM NUMBER RPC
-    (24) inst -> . LDR REG COMMA LPC REG RPC
-    (25) inst -> . STR REG COMMA LPC REG RPC COMMA REG
-    (26) inst -> . STR REG COMMA LPC REG COMMA NUM NUMBER RPC
-    (27) inst -> . STR REG COMMA LPC REG RPC COMMA MINUS REG
-    (28) inst -> . STR REG COMMA LPC REG RPC COMMA NUM NUMBER
-    (29) inst -> . STR REG COMMA LPC REG RPC
-    (30) inst -> . B ID
-    (31) inst -> . BEQ ID
-    (32) inst -> . BNE ID
-    (33) inst -> . BGT ID
-    (34) inst -> . BLT ID
-    (35) empty -> .
+    (14) inst -> . LSL REG COMMA REG COMMA NUM NUMBER
+    (15) inst -> . ADD REG COMMA REG COMMA REG
+    (16) inst -> . EOR REG COMMA REG COMMA REG
+    (17) inst -> . ADD REG COMMA REG COMMA NUM NUMBER
+    (18) inst -> . SUB REG COMMA REG COMMA REG
+    (19) inst -> . SUB REG COMMA REG COMMA NUM NUMBER
+    (20) inst -> . MUL REG COMMA REG COMMA REG
+    (21) inst -> . MUL REG COMMA REG COMMA NUM NUMBER
+    (22) inst -> . CMP REG COMMA REG
+    (23) inst -> . CMP REG COMMA NUM NUMBER
+    (24) inst -> . LDR REG COMMA LPC REG RPC COMMA REG
+    (25) inst -> . LDR REG COMMA LPC REG RPC COMMA MINUS REG
+    (26) inst -> . LDR REG COMMA LPC REG RPC COMMA NUM NUMBER
+    (27) inst -> . LDR REG COMMA LPC REG COMMA NUM NUMBER RPC
+    (28) inst -> . LDR REG COMMA LPC REG RPC
+    (29) inst -> . STR REG COMMA LPC REG RPC COMMA REG
+    (30) inst -> . STR REG COMMA LPC REG COMMA NUM NUMBER RPC
+    (31) inst -> . STR REG COMMA LPC REG RPC COMMA MINUS REG
+    (32) inst -> . STR REG COMMA LPC REG RPC COMMA NUM NUMBER
+    (33) inst -> . STR REG COMMA LPC REG RPC
+    (34) inst -> . B ID
+    (35) inst -> . BEQ ID
+    (36) inst -> . BNE ID
+    (37) inst -> . BGT ID
+    (38) inst -> . BLT ID
+    (39) empty -> .
 
     ID              shift and go to state 5
-    MOV             shift and go to state 6
-    ADD             shift and go to state 7
-    SUB             shift and go to state 8
-    MUL             shift and go to state 9
-    AND             shift and go to state 10
+    NOP             shift and go to state 6
+    MOV             shift and go to state 7
+    SUBS            shift and go to state 8
+    PRM             shift and go to state 9
+    UMB             shift and go to state 10
     ORR             shift and go to state 11
-    LSL             shift and go to state 12
-    PRM             shift and go to state 13
-    UMB             shift and go to state 14
-    CMP             shift and go to state 15
-    LDR             shift and go to state 16
-    STR             shift and go to state 17
-    B               shift and go to state 18
-    BEQ             shift and go to state 19
-    BNE             shift and go to state 20
-    BGT             shift and go to state 21
-    BLT             shift and go to state 22
-    $end            reduce using rule 35 (empty -> .)
+    AND             shift and go to state 12
+    LSL             shift and go to state 13
+    ADD             shift and go to state 14
+    EOR             shift and go to state 15
+    SUB             shift and go to state 16
+    MUL             shift and go to state 17
+    CMP             shift and go to state 18
+    LDR             shift and go to state 19
+    STR             shift and go to state 20
+    B               shift and go to state 21
+    BEQ             shift and go to state 22
+    BNE             shift and go to state 23
+    BGT             shift and go to state 24
+    BLT             shift and go to state 25
+    $end            reduce using rule 39 (empty -> .)
 
     inst                           shift and go to state 3
-    block                          shift and go to state 23
+    block                          shift and go to state 26
     empty                          shift and go to state 4
 
 state 4
@@ -228,162 +249,208 @@ state 5
 
     (4) inst -> ID . DP
 
-    DP              shift and go to state 24
+    DP              shift and go to state 27
 
 
 state 6
 
-    (5) inst -> MOV . REG COMMA NUM NUMBER
+    (5) inst -> NOP .
 
-    REG             shift and go to state 25
+    ID              reduce using rule 5 (inst -> NOP .)
+    NOP             reduce using rule 5 (inst -> NOP .)
+    MOV             reduce using rule 5 (inst -> NOP .)
+    SUBS            reduce using rule 5 (inst -> NOP .)
+    PRM             reduce using rule 5 (inst -> NOP .)
+    UMB             reduce using rule 5 (inst -> NOP .)
+    ORR             reduce using rule 5 (inst -> NOP .)
+    AND             reduce using rule 5 (inst -> NOP .)
+    LSL             reduce using rule 5 (inst -> NOP .)
+    ADD             reduce using rule 5 (inst -> NOP .)
+    EOR             reduce using rule 5 (inst -> NOP .)
+    SUB             reduce using rule 5 (inst -> NOP .)
+    MUL             reduce using rule 5 (inst -> NOP .)
+    CMP             reduce using rule 5 (inst -> NOP .)
+    LDR             reduce using rule 5 (inst -> NOP .)
+    STR             reduce using rule 5 (inst -> NOP .)
+    B               reduce using rule 5 (inst -> NOP .)
+    BEQ             reduce using rule 5 (inst -> NOP .)
+    BNE             reduce using rule 5 (inst -> NOP .)
+    BGT             reduce using rule 5 (inst -> NOP .)
+    BLT             reduce using rule 5 (inst -> NOP .)
+    $end            reduce using rule 5 (inst -> NOP .)
 
 
 state 7
 
-    (6) inst -> ADD . REG COMMA REG COMMA REG
-    (7) inst -> ADD . REG COMMA REG COMMA NUM NUMBER
-
-    REG             shift and go to state 26
-
-
-state 8
-
-    (8) inst -> SUB . REG COMMA REG COMMA REG
-    (9) inst -> SUB . REG COMMA REG COMMA NUM NUMBER
-
-    REG             shift and go to state 27
-
-
-state 9
-
-    (10) inst -> MUL . REG COMMA REG COMMA REG
-    (11) inst -> MUL . REG COMMA REG COMMA NUM NUMBER
+    (6) inst -> MOV . REG COMMA NUM NUMBER
 
     REG             shift and go to state 28
 
 
-state 10
+state 8
 
-    (12) inst -> AND . REG COMMA REG COMMA REG
-    (13) inst -> AND . REG COMMA REG COMMA NUM NUMBER
+    (7) inst -> SUBS . REG COMMA REG COMMA REG
+    (8) inst -> SUBS . REG COMMA REG COMMA NUM NUMBER
 
     REG             shift and go to state 29
 
 
-state 11
+state 9
 
-    (14) inst -> ORR . REG COMMA REG COMMA REG
+    (9) inst -> PRM . REG COMMA REG
 
     REG             shift and go to state 30
 
 
-state 12
+state 10
 
-    (15) inst -> LSL . REG COMMA REG COMMA NUM NUMBER
+    (10) inst -> UMB . REG COMMA REG COMMA NUM NUMBER
 
     REG             shift and go to state 31
 
 
-state 13
+state 11
 
-    (16) inst -> PRM . REG COMMA REG
+    (11) inst -> ORR . REG COMMA REG COMMA REG
 
     REG             shift and go to state 32
 
 
-state 14
+state 12
 
-    (17) inst -> UMB . REG COMMA REG COMMA NUM NUMBER
+    (12) inst -> AND . REG COMMA REG COMMA REG
+    (13) inst -> AND . REG COMMA REG COMMA NUM NUMBER
 
     REG             shift and go to state 33
 
 
-state 15
+state 13
 
-    (18) inst -> CMP . REG COMMA REG
-    (19) inst -> CMP . REG COMMA NUM NUMBER
+    (14) inst -> LSL . REG COMMA REG COMMA NUM NUMBER
 
     REG             shift and go to state 34
 
 
-state 16
+state 14
 
-    (20) inst -> LDR . REG COMMA LPC REG RPC COMMA REG
-    (21) inst -> LDR . REG COMMA LPC REG RPC COMMA MINUS REG
-    (22) inst -> LDR . REG COMMA LPC REG RPC COMMA NUM NUMBER
-    (23) inst -> LDR . REG COMMA LPC REG COMMA NUM NUMBER RPC
-    (24) inst -> LDR . REG COMMA LPC REG RPC
+    (15) inst -> ADD . REG COMMA REG COMMA REG
+    (17) inst -> ADD . REG COMMA REG COMMA NUM NUMBER
 
     REG             shift and go to state 35
 
 
-state 17
+state 15
 
-    (25) inst -> STR . REG COMMA LPC REG RPC COMMA REG
-    (26) inst -> STR . REG COMMA LPC REG COMMA NUM NUMBER RPC
-    (27) inst -> STR . REG COMMA LPC REG RPC COMMA MINUS REG
-    (28) inst -> STR . REG COMMA LPC REG RPC COMMA NUM NUMBER
-    (29) inst -> STR . REG COMMA LPC REG RPC
+    (16) inst -> EOR . REG COMMA REG COMMA REG
 
     REG             shift and go to state 36
 
 
+state 16
+
+    (18) inst -> SUB . REG COMMA REG COMMA REG
+    (19) inst -> SUB . REG COMMA REG COMMA NUM NUMBER
+
+    REG             shift and go to state 37
+
+
+state 17
+
+    (20) inst -> MUL . REG COMMA REG COMMA REG
+    (21) inst -> MUL . REG COMMA REG COMMA NUM NUMBER
+
+    REG             shift and go to state 38
+
+
 state 18
 
-    (30) inst -> B . ID
+    (22) inst -> CMP . REG COMMA REG
+    (23) inst -> CMP . REG COMMA NUM NUMBER
 
-    ID              shift and go to state 37
+    REG             shift and go to state 39
 
 
 state 19
 
-    (31) inst -> BEQ . ID
+    (24) inst -> LDR . REG COMMA LPC REG RPC COMMA REG
+    (25) inst -> LDR . REG COMMA LPC REG RPC COMMA MINUS REG
+    (26) inst -> LDR . REG COMMA LPC REG RPC COMMA NUM NUMBER
+    (27) inst -> LDR . REG COMMA LPC REG COMMA NUM NUMBER RPC
+    (28) inst -> LDR . REG COMMA LPC REG RPC
 
-    ID              shift and go to state 38
+    REG             shift and go to state 40
 
 
 state 20
 
-    (32) inst -> BNE . ID
+    (29) inst -> STR . REG COMMA LPC REG RPC COMMA REG
+    (30) inst -> STR . REG COMMA LPC REG COMMA NUM NUMBER RPC
+    (31) inst -> STR . REG COMMA LPC REG RPC COMMA MINUS REG
+    (32) inst -> STR . REG COMMA LPC REG RPC COMMA NUM NUMBER
+    (33) inst -> STR . REG COMMA LPC REG RPC
 
-    ID              shift and go to state 39
+    REG             shift and go to state 41
 
 
 state 21
 
-    (33) inst -> BGT . ID
+    (34) inst -> B . ID
 
-    ID              shift and go to state 40
+    ID              shift and go to state 42
 
 
 state 22
 
-    (34) inst -> BLT . ID
+    (35) inst -> BEQ . ID
 
-    ID              shift and go to state 41
+    ID              shift and go to state 43
 
 
 state 23
+
+    (36) inst -> BNE . ID
+
+    ID              shift and go to state 44
+
+
+state 24
+
+    (37) inst -> BGT . ID
+
+    ID              shift and go to state 45
+
+
+state 25
+
+    (38) inst -> BLT . ID
+
+    ID              shift and go to state 46
+
+
+state 26
 
     (2) block -> inst block .
 
     $end            reduce using rule 2 (block -> inst block .)
 
 
-state 24
+state 27
 
     (4) inst -> ID DP .
 
     ID              reduce using rule 4 (inst -> ID DP .)
+    NOP             reduce using rule 4 (inst -> ID DP .)
     MOV             reduce using rule 4 (inst -> ID DP .)
-    ADD             reduce using rule 4 (inst -> ID DP .)
-    SUB             reduce using rule 4 (inst -> ID DP .)
-    MUL             reduce using rule 4 (inst -> ID DP .)
-    AND             reduce using rule 4 (inst -> ID DP .)
-    ORR             reduce using rule 4 (inst -> ID DP .)
-    LSL             reduce using rule 4 (inst -> ID DP .)
+    SUBS            reduce using rule 4 (inst -> ID DP .)
     PRM             reduce using rule 4 (inst -> ID DP .)
     UMB             reduce using rule 4 (inst -> ID DP .)
+    ORR             reduce using rule 4 (inst -> ID DP .)
+    AND             reduce using rule 4 (inst -> ID DP .)
+    LSL             reduce using rule 4 (inst -> ID DP .)
+    ADD             reduce using rule 4 (inst -> ID DP .)
+    EOR             reduce using rule 4 (inst -> ID DP .)
+    SUB             reduce using rule 4 (inst -> ID DP .)
+    MUL             reduce using rule 4 (inst -> ID DP .)
     CMP             reduce using rule 4 (inst -> ID DP .)
     LDR             reduce using rule 4 (inst -> ID DP .)
     STR             reduce using rule 4 (inst -> ID DP .)
@@ -395,706 +462,771 @@ state 24
     $end            reduce using rule 4 (inst -> ID DP .)
 
 
-state 25
-
-    (5) inst -> MOV REG . COMMA NUM NUMBER
-
-    COMMA           shift and go to state 42
-
-
-state 26
-
-    (6) inst -> ADD REG . COMMA REG COMMA REG
-    (7) inst -> ADD REG . COMMA REG COMMA NUM NUMBER
-
-    COMMA           shift and go to state 43
-
-
-state 27
-
-    (8) inst -> SUB REG . COMMA REG COMMA REG
-    (9) inst -> SUB REG . COMMA REG COMMA NUM NUMBER
-
-    COMMA           shift and go to state 44
-
-
 state 28
 
-    (10) inst -> MUL REG . COMMA REG COMMA REG
-    (11) inst -> MUL REG . COMMA REG COMMA NUM NUMBER
-
-    COMMA           shift and go to state 45
-
-
-state 29
-
-    (12) inst -> AND REG . COMMA REG COMMA REG
-    (13) inst -> AND REG . COMMA REG COMMA NUM NUMBER
-
-    COMMA           shift and go to state 46
-
-
-state 30
-
-    (14) inst -> ORR REG . COMMA REG COMMA REG
+    (6) inst -> MOV REG . COMMA NUM NUMBER
 
     COMMA           shift and go to state 47
 
 
-state 31
+state 29
 
-    (15) inst -> LSL REG . COMMA REG COMMA NUM NUMBER
+    (7) inst -> SUBS REG . COMMA REG COMMA REG
+    (8) inst -> SUBS REG . COMMA REG COMMA NUM NUMBER
 
     COMMA           shift and go to state 48
 
 
-state 32
+state 30
 
-    (16) inst -> PRM REG . COMMA REG
+    (9) inst -> PRM REG . COMMA REG
 
     COMMA           shift and go to state 49
 
 
-state 33
+state 31
 
-    (17) inst -> UMB REG . COMMA REG COMMA NUM NUMBER
+    (10) inst -> UMB REG . COMMA REG COMMA NUM NUMBER
 
     COMMA           shift and go to state 50
 
 
-state 34
+state 32
 
-    (18) inst -> CMP REG . COMMA REG
-    (19) inst -> CMP REG . COMMA NUM NUMBER
+    (11) inst -> ORR REG . COMMA REG COMMA REG
 
     COMMA           shift and go to state 51
 
 
-state 35
+state 33
 
-    (20) inst -> LDR REG . COMMA LPC REG RPC COMMA REG
-    (21) inst -> LDR REG . COMMA LPC REG RPC COMMA MINUS REG
-    (22) inst -> LDR REG . COMMA LPC REG RPC COMMA NUM NUMBER
-    (23) inst -> LDR REG . COMMA LPC REG COMMA NUM NUMBER RPC
-    (24) inst -> LDR REG . COMMA LPC REG RPC
+    (12) inst -> AND REG . COMMA REG COMMA REG
+    (13) inst -> AND REG . COMMA REG COMMA NUM NUMBER
 
     COMMA           shift and go to state 52
 
 
-state 36
+state 34
 
-    (25) inst -> STR REG . COMMA LPC REG RPC COMMA REG
-    (26) inst -> STR REG . COMMA LPC REG COMMA NUM NUMBER RPC
-    (27) inst -> STR REG . COMMA LPC REG RPC COMMA MINUS REG
-    (28) inst -> STR REG . COMMA LPC REG RPC COMMA NUM NUMBER
-    (29) inst -> STR REG . COMMA LPC REG RPC
+    (14) inst -> LSL REG . COMMA REG COMMA NUM NUMBER
 
     COMMA           shift and go to state 53
 
 
+state 35
+
+    (15) inst -> ADD REG . COMMA REG COMMA REG
+    (17) inst -> ADD REG . COMMA REG COMMA NUM NUMBER
+
+    COMMA           shift and go to state 54
+
+
+state 36
+
+    (16) inst -> EOR REG . COMMA REG COMMA REG
+
+    COMMA           shift and go to state 55
+
+
 state 37
 
-    (30) inst -> B ID .
+    (18) inst -> SUB REG . COMMA REG COMMA REG
+    (19) inst -> SUB REG . COMMA REG COMMA NUM NUMBER
 
-    ID              reduce using rule 30 (inst -> B ID .)
-    MOV             reduce using rule 30 (inst -> B ID .)
-    ADD             reduce using rule 30 (inst -> B ID .)
-    SUB             reduce using rule 30 (inst -> B ID .)
-    MUL             reduce using rule 30 (inst -> B ID .)
-    AND             reduce using rule 30 (inst -> B ID .)
-    ORR             reduce using rule 30 (inst -> B ID .)
-    LSL             reduce using rule 30 (inst -> B ID .)
-    PRM             reduce using rule 30 (inst -> B ID .)
-    UMB             reduce using rule 30 (inst -> B ID .)
-    CMP             reduce using rule 30 (inst -> B ID .)
-    LDR             reduce using rule 30 (inst -> B ID .)
-    STR             reduce using rule 30 (inst -> B ID .)
-    B               reduce using rule 30 (inst -> B ID .)
-    BEQ             reduce using rule 30 (inst -> B ID .)
-    BNE             reduce using rule 30 (inst -> B ID .)
-    BGT             reduce using rule 30 (inst -> B ID .)
-    BLT             reduce using rule 30 (inst -> B ID .)
-    $end            reduce using rule 30 (inst -> B ID .)
+    COMMA           shift and go to state 56
 
 
 state 38
 
-    (31) inst -> BEQ ID .
+    (20) inst -> MUL REG . COMMA REG COMMA REG
+    (21) inst -> MUL REG . COMMA REG COMMA NUM NUMBER
 
-    ID              reduce using rule 31 (inst -> BEQ ID .)
-    MOV             reduce using rule 31 (inst -> BEQ ID .)
-    ADD             reduce using rule 31 (inst -> BEQ ID .)
-    SUB             reduce using rule 31 (inst -> BEQ ID .)
-    MUL             reduce using rule 31 (inst -> BEQ ID .)
-    AND             reduce using rule 31 (inst -> BEQ ID .)
-    ORR             reduce using rule 31 (inst -> BEQ ID .)
-    LSL             reduce using rule 31 (inst -> BEQ ID .)
-    PRM             reduce using rule 31 (inst -> BEQ ID .)
-    UMB             reduce using rule 31 (inst -> BEQ ID .)
-    CMP             reduce using rule 31 (inst -> BEQ ID .)
-    LDR             reduce using rule 31 (inst -> BEQ ID .)
-    STR             reduce using rule 31 (inst -> BEQ ID .)
-    B               reduce using rule 31 (inst -> BEQ ID .)
-    BEQ             reduce using rule 31 (inst -> BEQ ID .)
-    BNE             reduce using rule 31 (inst -> BEQ ID .)
-    BGT             reduce using rule 31 (inst -> BEQ ID .)
-    BLT             reduce using rule 31 (inst -> BEQ ID .)
-    $end            reduce using rule 31 (inst -> BEQ ID .)
+    COMMA           shift and go to state 57
 
 
 state 39
 
-    (32) inst -> BNE ID .
+    (22) inst -> CMP REG . COMMA REG
+    (23) inst -> CMP REG . COMMA NUM NUMBER
 
-    ID              reduce using rule 32 (inst -> BNE ID .)
-    MOV             reduce using rule 32 (inst -> BNE ID .)
-    ADD             reduce using rule 32 (inst -> BNE ID .)
-    SUB             reduce using rule 32 (inst -> BNE ID .)
-    MUL             reduce using rule 32 (inst -> BNE ID .)
-    AND             reduce using rule 32 (inst -> BNE ID .)
-    ORR             reduce using rule 32 (inst -> BNE ID .)
-    LSL             reduce using rule 32 (inst -> BNE ID .)
-    PRM             reduce using rule 32 (inst -> BNE ID .)
-    UMB             reduce using rule 32 (inst -> BNE ID .)
-    CMP             reduce using rule 32 (inst -> BNE ID .)
-    LDR             reduce using rule 32 (inst -> BNE ID .)
-    STR             reduce using rule 32 (inst -> BNE ID .)
-    B               reduce using rule 32 (inst -> BNE ID .)
-    BEQ             reduce using rule 32 (inst -> BNE ID .)
-    BNE             reduce using rule 32 (inst -> BNE ID .)
-    BGT             reduce using rule 32 (inst -> BNE ID .)
-    BLT             reduce using rule 32 (inst -> BNE ID .)
-    $end            reduce using rule 32 (inst -> BNE ID .)
+    COMMA           shift and go to state 58
 
 
 state 40
 
-    (33) inst -> BGT ID .
+    (24) inst -> LDR REG . COMMA LPC REG RPC COMMA REG
+    (25) inst -> LDR REG . COMMA LPC REG RPC COMMA MINUS REG
+    (26) inst -> LDR REG . COMMA LPC REG RPC COMMA NUM NUMBER
+    (27) inst -> LDR REG . COMMA LPC REG COMMA NUM NUMBER RPC
+    (28) inst -> LDR REG . COMMA LPC REG RPC
 
-    ID              reduce using rule 33 (inst -> BGT ID .)
-    MOV             reduce using rule 33 (inst -> BGT ID .)
-    ADD             reduce using rule 33 (inst -> BGT ID .)
-    SUB             reduce using rule 33 (inst -> BGT ID .)
-    MUL             reduce using rule 33 (inst -> BGT ID .)
-    AND             reduce using rule 33 (inst -> BGT ID .)
-    ORR             reduce using rule 33 (inst -> BGT ID .)
-    LSL             reduce using rule 33 (inst -> BGT ID .)
-    PRM             reduce using rule 33 (inst -> BGT ID .)
-    UMB             reduce using rule 33 (inst -> BGT ID .)
-    CMP             reduce using rule 33 (inst -> BGT ID .)
-    LDR             reduce using rule 33 (inst -> BGT ID .)
-    STR             reduce using rule 33 (inst -> BGT ID .)
-    B               reduce using rule 33 (inst -> BGT ID .)
-    BEQ             reduce using rule 33 (inst -> BGT ID .)
-    BNE             reduce using rule 33 (inst -> BGT ID .)
-    BGT             reduce using rule 33 (inst -> BGT ID .)
-    BLT             reduce using rule 33 (inst -> BGT ID .)
-    $end            reduce using rule 33 (inst -> BGT ID .)
+    COMMA           shift and go to state 59
 
 
 state 41
 
-    (34) inst -> BLT ID .
+    (29) inst -> STR REG . COMMA LPC REG RPC COMMA REG
+    (30) inst -> STR REG . COMMA LPC REG COMMA NUM NUMBER RPC
+    (31) inst -> STR REG . COMMA LPC REG RPC COMMA MINUS REG
+    (32) inst -> STR REG . COMMA LPC REG RPC COMMA NUM NUMBER
+    (33) inst -> STR REG . COMMA LPC REG RPC
 
-    ID              reduce using rule 34 (inst -> BLT ID .)
-    MOV             reduce using rule 34 (inst -> BLT ID .)
-    ADD             reduce using rule 34 (inst -> BLT ID .)
-    SUB             reduce using rule 34 (inst -> BLT ID .)
-    MUL             reduce using rule 34 (inst -> BLT ID .)
-    AND             reduce using rule 34 (inst -> BLT ID .)
-    ORR             reduce using rule 34 (inst -> BLT ID .)
-    LSL             reduce using rule 34 (inst -> BLT ID .)
-    PRM             reduce using rule 34 (inst -> BLT ID .)
-    UMB             reduce using rule 34 (inst -> BLT ID .)
-    CMP             reduce using rule 34 (inst -> BLT ID .)
-    LDR             reduce using rule 34 (inst -> BLT ID .)
-    STR             reduce using rule 34 (inst -> BLT ID .)
-    B               reduce using rule 34 (inst -> BLT ID .)
-    BEQ             reduce using rule 34 (inst -> BLT ID .)
-    BNE             reduce using rule 34 (inst -> BLT ID .)
-    BGT             reduce using rule 34 (inst -> BLT ID .)
-    BLT             reduce using rule 34 (inst -> BLT ID .)
-    $end            reduce using rule 34 (inst -> BLT ID .)
+    COMMA           shift and go to state 60
 
 
 state 42
 
-    (5) inst -> MOV REG COMMA . NUM NUMBER
+    (34) inst -> B ID .
 
-    NUM             shift and go to state 54
+    ID              reduce using rule 34 (inst -> B ID .)
+    NOP             reduce using rule 34 (inst -> B ID .)
+    MOV             reduce using rule 34 (inst -> B ID .)
+    SUBS            reduce using rule 34 (inst -> B ID .)
+    PRM             reduce using rule 34 (inst -> B ID .)
+    UMB             reduce using rule 34 (inst -> B ID .)
+    ORR             reduce using rule 34 (inst -> B ID .)
+    AND             reduce using rule 34 (inst -> B ID .)
+    LSL             reduce using rule 34 (inst -> B ID .)
+    ADD             reduce using rule 34 (inst -> B ID .)
+    EOR             reduce using rule 34 (inst -> B ID .)
+    SUB             reduce using rule 34 (inst -> B ID .)
+    MUL             reduce using rule 34 (inst -> B ID .)
+    CMP             reduce using rule 34 (inst -> B ID .)
+    LDR             reduce using rule 34 (inst -> B ID .)
+    STR             reduce using rule 34 (inst -> B ID .)
+    B               reduce using rule 34 (inst -> B ID .)
+    BEQ             reduce using rule 34 (inst -> B ID .)
+    BNE             reduce using rule 34 (inst -> B ID .)
+    BGT             reduce using rule 34 (inst -> B ID .)
+    BLT             reduce using rule 34 (inst -> B ID .)
+    $end            reduce using rule 34 (inst -> B ID .)
 
 
 state 43
 
-    (6) inst -> ADD REG COMMA . REG COMMA REG
-    (7) inst -> ADD REG COMMA . REG COMMA NUM NUMBER
+    (35) inst -> BEQ ID .
 
-    REG             shift and go to state 55
+    ID              reduce using rule 35 (inst -> BEQ ID .)
+    NOP             reduce using rule 35 (inst -> BEQ ID .)
+    MOV             reduce using rule 35 (inst -> BEQ ID .)
+    SUBS            reduce using rule 35 (inst -> BEQ ID .)
+    PRM             reduce using rule 35 (inst -> BEQ ID .)
+    UMB             reduce using rule 35 (inst -> BEQ ID .)
+    ORR             reduce using rule 35 (inst -> BEQ ID .)
+    AND             reduce using rule 35 (inst -> BEQ ID .)
+    LSL             reduce using rule 35 (inst -> BEQ ID .)
+    ADD             reduce using rule 35 (inst -> BEQ ID .)
+    EOR             reduce using rule 35 (inst -> BEQ ID .)
+    SUB             reduce using rule 35 (inst -> BEQ ID .)
+    MUL             reduce using rule 35 (inst -> BEQ ID .)
+    CMP             reduce using rule 35 (inst -> BEQ ID .)
+    LDR             reduce using rule 35 (inst -> BEQ ID .)
+    STR             reduce using rule 35 (inst -> BEQ ID .)
+    B               reduce using rule 35 (inst -> BEQ ID .)
+    BEQ             reduce using rule 35 (inst -> BEQ ID .)
+    BNE             reduce using rule 35 (inst -> BEQ ID .)
+    BGT             reduce using rule 35 (inst -> BEQ ID .)
+    BLT             reduce using rule 35 (inst -> BEQ ID .)
+    $end            reduce using rule 35 (inst -> BEQ ID .)
 
 
 state 44
 
-    (8) inst -> SUB REG COMMA . REG COMMA REG
-    (9) inst -> SUB REG COMMA . REG COMMA NUM NUMBER
+    (36) inst -> BNE ID .
 
-    REG             shift and go to state 56
+    ID              reduce using rule 36 (inst -> BNE ID .)
+    NOP             reduce using rule 36 (inst -> BNE ID .)
+    MOV             reduce using rule 36 (inst -> BNE ID .)
+    SUBS            reduce using rule 36 (inst -> BNE ID .)
+    PRM             reduce using rule 36 (inst -> BNE ID .)
+    UMB             reduce using rule 36 (inst -> BNE ID .)
+    ORR             reduce using rule 36 (inst -> BNE ID .)
+    AND             reduce using rule 36 (inst -> BNE ID .)
+    LSL             reduce using rule 36 (inst -> BNE ID .)
+    ADD             reduce using rule 36 (inst -> BNE ID .)
+    EOR             reduce using rule 36 (inst -> BNE ID .)
+    SUB             reduce using rule 36 (inst -> BNE ID .)
+    MUL             reduce using rule 36 (inst -> BNE ID .)
+    CMP             reduce using rule 36 (inst -> BNE ID .)
+    LDR             reduce using rule 36 (inst -> BNE ID .)
+    STR             reduce using rule 36 (inst -> BNE ID .)
+    B               reduce using rule 36 (inst -> BNE ID .)
+    BEQ             reduce using rule 36 (inst -> BNE ID .)
+    BNE             reduce using rule 36 (inst -> BNE ID .)
+    BGT             reduce using rule 36 (inst -> BNE ID .)
+    BLT             reduce using rule 36 (inst -> BNE ID .)
+    $end            reduce using rule 36 (inst -> BNE ID .)
 
 
 state 45
 
-    (10) inst -> MUL REG COMMA . REG COMMA REG
-    (11) inst -> MUL REG COMMA . REG COMMA NUM NUMBER
+    (37) inst -> BGT ID .
 
-    REG             shift and go to state 57
+    ID              reduce using rule 37 (inst -> BGT ID .)
+    NOP             reduce using rule 37 (inst -> BGT ID .)
+    MOV             reduce using rule 37 (inst -> BGT ID .)
+    SUBS            reduce using rule 37 (inst -> BGT ID .)
+    PRM             reduce using rule 37 (inst -> BGT ID .)
+    UMB             reduce using rule 37 (inst -> BGT ID .)
+    ORR             reduce using rule 37 (inst -> BGT ID .)
+    AND             reduce using rule 37 (inst -> BGT ID .)
+    LSL             reduce using rule 37 (inst -> BGT ID .)
+    ADD             reduce using rule 37 (inst -> BGT ID .)
+    EOR             reduce using rule 37 (inst -> BGT ID .)
+    SUB             reduce using rule 37 (inst -> BGT ID .)
+    MUL             reduce using rule 37 (inst -> BGT ID .)
+    CMP             reduce using rule 37 (inst -> BGT ID .)
+    LDR             reduce using rule 37 (inst -> BGT ID .)
+    STR             reduce using rule 37 (inst -> BGT ID .)
+    B               reduce using rule 37 (inst -> BGT ID .)
+    BEQ             reduce using rule 37 (inst -> BGT ID .)
+    BNE             reduce using rule 37 (inst -> BGT ID .)
+    BGT             reduce using rule 37 (inst -> BGT ID .)
+    BLT             reduce using rule 37 (inst -> BGT ID .)
+    $end            reduce using rule 37 (inst -> BGT ID .)
 
 
 state 46
 
-    (12) inst -> AND REG COMMA . REG COMMA REG
-    (13) inst -> AND REG COMMA . REG COMMA NUM NUMBER
+    (38) inst -> BLT ID .
 
-    REG             shift and go to state 58
+    ID              reduce using rule 38 (inst -> BLT ID .)
+    NOP             reduce using rule 38 (inst -> BLT ID .)
+    MOV             reduce using rule 38 (inst -> BLT ID .)
+    SUBS            reduce using rule 38 (inst -> BLT ID .)
+    PRM             reduce using rule 38 (inst -> BLT ID .)
+    UMB             reduce using rule 38 (inst -> BLT ID .)
+    ORR             reduce using rule 38 (inst -> BLT ID .)
+    AND             reduce using rule 38 (inst -> BLT ID .)
+    LSL             reduce using rule 38 (inst -> BLT ID .)
+    ADD             reduce using rule 38 (inst -> BLT ID .)
+    EOR             reduce using rule 38 (inst -> BLT ID .)
+    SUB             reduce using rule 38 (inst -> BLT ID .)
+    MUL             reduce using rule 38 (inst -> BLT ID .)
+    CMP             reduce using rule 38 (inst -> BLT ID .)
+    LDR             reduce using rule 38 (inst -> BLT ID .)
+    STR             reduce using rule 38 (inst -> BLT ID .)
+    B               reduce using rule 38 (inst -> BLT ID .)
+    BEQ             reduce using rule 38 (inst -> BLT ID .)
+    BNE             reduce using rule 38 (inst -> BLT ID .)
+    BGT             reduce using rule 38 (inst -> BLT ID .)
+    BLT             reduce using rule 38 (inst -> BLT ID .)
+    $end            reduce using rule 38 (inst -> BLT ID .)
 
 
 state 47
 
-    (14) inst -> ORR REG COMMA . REG COMMA REG
+    (6) inst -> MOV REG COMMA . NUM NUMBER
 
-    REG             shift and go to state 59
+    NUM             shift and go to state 61
 
 
 state 48
 
-    (15) inst -> LSL REG COMMA . REG COMMA NUM NUMBER
-
-    REG             shift and go to state 60
-
-
-state 49
-
-    (16) inst -> PRM REG COMMA . REG
-
-    REG             shift and go to state 61
-
-
-state 50
-
-    (17) inst -> UMB REG COMMA . REG COMMA NUM NUMBER
+    (7) inst -> SUBS REG COMMA . REG COMMA REG
+    (8) inst -> SUBS REG COMMA . REG COMMA NUM NUMBER
 
     REG             shift and go to state 62
 
 
-state 51
+state 49
 
-    (18) inst -> CMP REG COMMA . REG
-    (19) inst -> CMP REG COMMA . NUM NUMBER
+    (9) inst -> PRM REG COMMA . REG
 
     REG             shift and go to state 63
-    NUM             shift and go to state 64
+
+
+state 50
+
+    (10) inst -> UMB REG COMMA . REG COMMA NUM NUMBER
+
+    REG             shift and go to state 64
+
+
+state 51
+
+    (11) inst -> ORR REG COMMA . REG COMMA REG
+
+    REG             shift and go to state 65
 
 
 state 52
 
-    (20) inst -> LDR REG COMMA . LPC REG RPC COMMA REG
-    (21) inst -> LDR REG COMMA . LPC REG RPC COMMA MINUS REG
-    (22) inst -> LDR REG COMMA . LPC REG RPC COMMA NUM NUMBER
-    (23) inst -> LDR REG COMMA . LPC REG COMMA NUM NUMBER RPC
-    (24) inst -> LDR REG COMMA . LPC REG RPC
+    (12) inst -> AND REG COMMA . REG COMMA REG
+    (13) inst -> AND REG COMMA . REG COMMA NUM NUMBER
 
-    LPC             shift and go to state 65
+    REG             shift and go to state 66
 
 
 state 53
 
-    (25) inst -> STR REG COMMA . LPC REG RPC COMMA REG
-    (26) inst -> STR REG COMMA . LPC REG COMMA NUM NUMBER RPC
-    (27) inst -> STR REG COMMA . LPC REG RPC COMMA MINUS REG
-    (28) inst -> STR REG COMMA . LPC REG RPC COMMA NUM NUMBER
-    (29) inst -> STR REG COMMA . LPC REG RPC
+    (14) inst -> LSL REG COMMA . REG COMMA NUM NUMBER
 
-    LPC             shift and go to state 66
+    REG             shift and go to state 67
 
 
 state 54
 
-    (5) inst -> MOV REG COMMA NUM . NUMBER
+    (15) inst -> ADD REG COMMA . REG COMMA REG
+    (17) inst -> ADD REG COMMA . REG COMMA NUM NUMBER
 
-    NUMBER          shift and go to state 67
+    REG             shift and go to state 68
 
 
 state 55
 
-    (6) inst -> ADD REG COMMA REG . COMMA REG
-    (7) inst -> ADD REG COMMA REG . COMMA NUM NUMBER
+    (16) inst -> EOR REG COMMA . REG COMMA REG
 
-    COMMA           shift and go to state 68
+    REG             shift and go to state 69
 
 
 state 56
 
-    (8) inst -> SUB REG COMMA REG . COMMA REG
-    (9) inst -> SUB REG COMMA REG . COMMA NUM NUMBER
+    (18) inst -> SUB REG COMMA . REG COMMA REG
+    (19) inst -> SUB REG COMMA . REG COMMA NUM NUMBER
 
-    COMMA           shift and go to state 69
+    REG             shift and go to state 70
 
 
 state 57
 
-    (10) inst -> MUL REG COMMA REG . COMMA REG
-    (11) inst -> MUL REG COMMA REG . COMMA NUM NUMBER
+    (20) inst -> MUL REG COMMA . REG COMMA REG
+    (21) inst -> MUL REG COMMA . REG COMMA NUM NUMBER
 
-    COMMA           shift and go to state 70
+    REG             shift and go to state 71
 
 
 state 58
 
-    (12) inst -> AND REG COMMA REG . COMMA REG
-    (13) inst -> AND REG COMMA REG . COMMA NUM NUMBER
+    (22) inst -> CMP REG COMMA . REG
+    (23) inst -> CMP REG COMMA . NUM NUMBER
 
-    COMMA           shift and go to state 71
+    REG             shift and go to state 72
+    NUM             shift and go to state 73
 
 
 state 59
 
-    (14) inst -> ORR REG COMMA REG . COMMA REG
+    (24) inst -> LDR REG COMMA . LPC REG RPC COMMA REG
+    (25) inst -> LDR REG COMMA . LPC REG RPC COMMA MINUS REG
+    (26) inst -> LDR REG COMMA . LPC REG RPC COMMA NUM NUMBER
+    (27) inst -> LDR REG COMMA . LPC REG COMMA NUM NUMBER RPC
+    (28) inst -> LDR REG COMMA . LPC REG RPC
 
-    COMMA           shift and go to state 72
+    LPC             shift and go to state 74
 
 
 state 60
 
-    (15) inst -> LSL REG COMMA REG . COMMA NUM NUMBER
+    (29) inst -> STR REG COMMA . LPC REG RPC COMMA REG
+    (30) inst -> STR REG COMMA . LPC REG COMMA NUM NUMBER RPC
+    (31) inst -> STR REG COMMA . LPC REG RPC COMMA MINUS REG
+    (32) inst -> STR REG COMMA . LPC REG RPC COMMA NUM NUMBER
+    (33) inst -> STR REG COMMA . LPC REG RPC
 
-    COMMA           shift and go to state 73
+    LPC             shift and go to state 75
 
 
 state 61
 
-    (16) inst -> PRM REG COMMA REG .
+    (6) inst -> MOV REG COMMA NUM . NUMBER
 
-    ID              reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    MOV             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    ADD             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    SUB             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    MUL             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    AND             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    ORR             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    LSL             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    PRM             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    UMB             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    CMP             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    LDR             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    STR             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    B               reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    BEQ             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    BNE             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    BGT             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    BLT             reduce using rule 16 (inst -> PRM REG COMMA REG .)
-    $end            reduce using rule 16 (inst -> PRM REG COMMA REG .)
+    NUMBER          shift and go to state 76
 
 
 state 62
 
-    (17) inst -> UMB REG COMMA REG . COMMA NUM NUMBER
+    (7) inst -> SUBS REG COMMA REG . COMMA REG
+    (8) inst -> SUBS REG COMMA REG . COMMA NUM NUMBER
 
-    COMMA           shift and go to state 74
+    COMMA           shift and go to state 77
 
 
 state 63
 
-    (18) inst -> CMP REG COMMA REG .
+    (9) inst -> PRM REG COMMA REG .
 
-    ID              reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    MOV             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    ADD             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    SUB             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    MUL             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    AND             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    ORR             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    LSL             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    PRM             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    UMB             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    CMP             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    LDR             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    STR             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    B               reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    BEQ             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    BNE             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    BGT             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    BLT             reduce using rule 18 (inst -> CMP REG COMMA REG .)
-    $end            reduce using rule 18 (inst -> CMP REG COMMA REG .)
+    ID              reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    NOP             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    MOV             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    SUBS            reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    PRM             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    UMB             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    ORR             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    AND             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    LSL             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    ADD             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    EOR             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    SUB             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    MUL             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    CMP             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    LDR             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    STR             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    B               reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    BEQ             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    BNE             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    BGT             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    BLT             reduce using rule 9 (inst -> PRM REG COMMA REG .)
+    $end            reduce using rule 9 (inst -> PRM REG COMMA REG .)
 
 
 state 64
 
-    (19) inst -> CMP REG COMMA NUM . NUMBER
+    (10) inst -> UMB REG COMMA REG . COMMA NUM NUMBER
 
-    NUMBER          shift and go to state 75
+    COMMA           shift and go to state 78
 
 
 state 65
 
-    (20) inst -> LDR REG COMMA LPC . REG RPC COMMA REG
-    (21) inst -> LDR REG COMMA LPC . REG RPC COMMA MINUS REG
-    (22) inst -> LDR REG COMMA LPC . REG RPC COMMA NUM NUMBER
-    (23) inst -> LDR REG COMMA LPC . REG COMMA NUM NUMBER RPC
-    (24) inst -> LDR REG COMMA LPC . REG RPC
+    (11) inst -> ORR REG COMMA REG . COMMA REG
 
-    REG             shift and go to state 76
+    COMMA           shift and go to state 79
 
 
 state 66
 
-    (25) inst -> STR REG COMMA LPC . REG RPC COMMA REG
-    (26) inst -> STR REG COMMA LPC . REG COMMA NUM NUMBER RPC
-    (27) inst -> STR REG COMMA LPC . REG RPC COMMA MINUS REG
-    (28) inst -> STR REG COMMA LPC . REG RPC COMMA NUM NUMBER
-    (29) inst -> STR REG COMMA LPC . REG RPC
+    (12) inst -> AND REG COMMA REG . COMMA REG
+    (13) inst -> AND REG COMMA REG . COMMA NUM NUMBER
 
-    REG             shift and go to state 77
+    COMMA           shift and go to state 80
 
 
 state 67
 
-    (5) inst -> MOV REG COMMA NUM NUMBER .
+    (14) inst -> LSL REG COMMA REG . COMMA NUM NUMBER
 
-    ID              reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    MOV             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    ADD             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    SUB             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    MUL             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    AND             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    ORR             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    LSL             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    PRM             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    UMB             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    CMP             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    LDR             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    STR             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    B               reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    BEQ             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    BNE             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    BGT             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    BLT             reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
-    $end            reduce using rule 5 (inst -> MOV REG COMMA NUM NUMBER .)
+    COMMA           shift and go to state 81
 
 
 state 68
 
-    (6) inst -> ADD REG COMMA REG COMMA . REG
-    (7) inst -> ADD REG COMMA REG COMMA . NUM NUMBER
+    (15) inst -> ADD REG COMMA REG . COMMA REG
+    (17) inst -> ADD REG COMMA REG . COMMA NUM NUMBER
 
-    REG             shift and go to state 78
-    NUM             shift and go to state 79
+    COMMA           shift and go to state 82
 
 
 state 69
 
-    (8) inst -> SUB REG COMMA REG COMMA . REG
-    (9) inst -> SUB REG COMMA REG COMMA . NUM NUMBER
+    (16) inst -> EOR REG COMMA REG . COMMA REG
 
-    REG             shift and go to state 80
-    NUM             shift and go to state 81
+    COMMA           shift and go to state 83
 
 
 state 70
 
-    (10) inst -> MUL REG COMMA REG COMMA . REG
-    (11) inst -> MUL REG COMMA REG COMMA . NUM NUMBER
+    (18) inst -> SUB REG COMMA REG . COMMA REG
+    (19) inst -> SUB REG COMMA REG . COMMA NUM NUMBER
 
-    REG             shift and go to state 82
-    NUM             shift and go to state 83
+    COMMA           shift and go to state 84
 
 
 state 71
 
-    (12) inst -> AND REG COMMA REG COMMA . REG
-    (13) inst -> AND REG COMMA REG COMMA . NUM NUMBER
+    (20) inst -> MUL REG COMMA REG . COMMA REG
+    (21) inst -> MUL REG COMMA REG . COMMA NUM NUMBER
 
-    REG             shift and go to state 84
-    NUM             shift and go to state 85
+    COMMA           shift and go to state 85
 
 
 state 72
 
-    (14) inst -> ORR REG COMMA REG COMMA . REG
+    (22) inst -> CMP REG COMMA REG .
 
-    REG             shift and go to state 86
+    ID              reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    NOP             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    MOV             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    SUBS            reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    PRM             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    UMB             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    ORR             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    AND             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    LSL             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    ADD             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    EOR             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    SUB             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    MUL             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    CMP             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    LDR             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    STR             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    B               reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    BEQ             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    BNE             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    BGT             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    BLT             reduce using rule 22 (inst -> CMP REG COMMA REG .)
+    $end            reduce using rule 22 (inst -> CMP REG COMMA REG .)
 
 
 state 73
 
-    (15) inst -> LSL REG COMMA REG COMMA . NUM NUMBER
+    (23) inst -> CMP REG COMMA NUM . NUMBER
 
-    NUM             shift and go to state 87
+    NUMBER          shift and go to state 86
 
 
 state 74
 
-    (17) inst -> UMB REG COMMA REG COMMA . NUM NUMBER
+    (24) inst -> LDR REG COMMA LPC . REG RPC COMMA REG
+    (25) inst -> LDR REG COMMA LPC . REG RPC COMMA MINUS REG
+    (26) inst -> LDR REG COMMA LPC . REG RPC COMMA NUM NUMBER
+    (27) inst -> LDR REG COMMA LPC . REG COMMA NUM NUMBER RPC
+    (28) inst -> LDR REG COMMA LPC . REG RPC
 
-    NUM             shift and go to state 88
+    REG             shift and go to state 87
 
 
 state 75
 
-    (19) inst -> CMP REG COMMA NUM NUMBER .
+    (29) inst -> STR REG COMMA LPC . REG RPC COMMA REG
+    (30) inst -> STR REG COMMA LPC . REG COMMA NUM NUMBER RPC
+    (31) inst -> STR REG COMMA LPC . REG RPC COMMA MINUS REG
+    (32) inst -> STR REG COMMA LPC . REG RPC COMMA NUM NUMBER
+    (33) inst -> STR REG COMMA LPC . REG RPC
 
-    ID              reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    MOV             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    ADD             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    SUB             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    MUL             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    AND             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    ORR             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    LSL             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    PRM             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    UMB             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    CMP             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    LDR             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    STR             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    B               reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    BEQ             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    BNE             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    BGT             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    BLT             reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
-    $end            reduce using rule 19 (inst -> CMP REG COMMA NUM NUMBER .)
+    REG             shift and go to state 88
 
 
 state 76
 
-    (20) inst -> LDR REG COMMA LPC REG . RPC COMMA REG
-    (21) inst -> LDR REG COMMA LPC REG . RPC COMMA MINUS REG
-    (22) inst -> LDR REG COMMA LPC REG . RPC COMMA NUM NUMBER
-    (23) inst -> LDR REG COMMA LPC REG . COMMA NUM NUMBER RPC
-    (24) inst -> LDR REG COMMA LPC REG . RPC
+    (6) inst -> MOV REG COMMA NUM NUMBER .
 
-    RPC             shift and go to state 90
-    COMMA           shift and go to state 89
+    ID              reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    NOP             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    MOV             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    SUBS            reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    PRM             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    UMB             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    ORR             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    AND             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    LSL             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    ADD             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    EOR             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    SUB             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    MUL             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    CMP             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    LDR             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    STR             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    B               reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    BEQ             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    BNE             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    BGT             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    BLT             reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
+    $end            reduce using rule 6 (inst -> MOV REG COMMA NUM NUMBER .)
 
 
 state 77
 
-    (25) inst -> STR REG COMMA LPC REG . RPC COMMA REG
-    (26) inst -> STR REG COMMA LPC REG . COMMA NUM NUMBER RPC
-    (27) inst -> STR REG COMMA LPC REG . RPC COMMA MINUS REG
-    (28) inst -> STR REG COMMA LPC REG . RPC COMMA NUM NUMBER
-    (29) inst -> STR REG COMMA LPC REG . RPC
+    (7) inst -> SUBS REG COMMA REG COMMA . REG
+    (8) inst -> SUBS REG COMMA REG COMMA . NUM NUMBER
 
-    RPC             shift and go to state 92
-    COMMA           shift and go to state 91
+    REG             shift and go to state 89
+    NUM             shift and go to state 90
 
 
 state 78
 
-    (6) inst -> ADD REG COMMA REG COMMA REG .
+    (10) inst -> UMB REG COMMA REG COMMA . NUM NUMBER
 
-    ID              reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    MOV             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    ADD             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    SUB             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    MUL             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    AND             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    ORR             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    LSL             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    PRM             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    UMB             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    CMP             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    LDR             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    STR             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    B               reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    BEQ             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    BNE             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    BGT             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    BLT             reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
-    $end            reduce using rule 6 (inst -> ADD REG COMMA REG COMMA REG .)
+    NUM             shift and go to state 91
 
 
 state 79
 
-    (7) inst -> ADD REG COMMA REG COMMA NUM . NUMBER
+    (11) inst -> ORR REG COMMA REG COMMA . REG
 
-    NUMBER          shift and go to state 93
+    REG             shift and go to state 92
 
 
 state 80
 
-    (8) inst -> SUB REG COMMA REG COMMA REG .
+    (12) inst -> AND REG COMMA REG COMMA . REG
+    (13) inst -> AND REG COMMA REG COMMA . NUM NUMBER
 
-    ID              reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    MOV             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    ADD             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    SUB             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    MUL             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    AND             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    ORR             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    LSL             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    PRM             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    UMB             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    CMP             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    LDR             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    STR             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    B               reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    BEQ             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    BNE             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    BGT             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    BLT             reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
-    $end            reduce using rule 8 (inst -> SUB REG COMMA REG COMMA REG .)
+    REG             shift and go to state 93
+    NUM             shift and go to state 94
 
 
 state 81
 
-    (9) inst -> SUB REG COMMA REG COMMA NUM . NUMBER
+    (14) inst -> LSL REG COMMA REG COMMA . NUM NUMBER
 
-    NUMBER          shift and go to state 94
+    NUM             shift and go to state 95
 
 
 state 82
 
-    (10) inst -> MUL REG COMMA REG COMMA REG .
+    (15) inst -> ADD REG COMMA REG COMMA . REG
+    (17) inst -> ADD REG COMMA REG COMMA . NUM NUMBER
 
-    ID              reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    MOV             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    ADD             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    SUB             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    MUL             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    AND             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    ORR             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    LSL             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    PRM             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    UMB             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    CMP             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    LDR             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    STR             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    B               reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    BEQ             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    BNE             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    BGT             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    BLT             reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
-    $end            reduce using rule 10 (inst -> MUL REG COMMA REG COMMA REG .)
+    REG             shift and go to state 96
+    NUM             shift and go to state 97
 
 
 state 83
 
-    (11) inst -> MUL REG COMMA REG COMMA NUM . NUMBER
+    (16) inst -> EOR REG COMMA REG COMMA . REG
 
-    NUMBER          shift and go to state 95
+    REG             shift and go to state 98
 
 
 state 84
 
+    (18) inst -> SUB REG COMMA REG COMMA . REG
+    (19) inst -> SUB REG COMMA REG COMMA . NUM NUMBER
+
+    REG             shift and go to state 99
+    NUM             shift and go to state 100
+
+
+state 85
+
+    (20) inst -> MUL REG COMMA REG COMMA . REG
+    (21) inst -> MUL REG COMMA REG COMMA . NUM NUMBER
+
+    REG             shift and go to state 101
+    NUM             shift and go to state 102
+
+
+state 86
+
+    (23) inst -> CMP REG COMMA NUM NUMBER .
+
+    ID              reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    NOP             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    MOV             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    SUBS            reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    PRM             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    UMB             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    ORR             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    AND             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    LSL             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    ADD             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    EOR             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    SUB             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    MUL             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    CMP             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    LDR             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    STR             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    B               reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    BEQ             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    BNE             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    BGT             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    BLT             reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+    $end            reduce using rule 23 (inst -> CMP REG COMMA NUM NUMBER .)
+
+
+state 87
+
+    (24) inst -> LDR REG COMMA LPC REG . RPC COMMA REG
+    (25) inst -> LDR REG COMMA LPC REG . RPC COMMA MINUS REG
+    (26) inst -> LDR REG COMMA LPC REG . RPC COMMA NUM NUMBER
+    (27) inst -> LDR REG COMMA LPC REG . COMMA NUM NUMBER RPC
+    (28) inst -> LDR REG COMMA LPC REG . RPC
+
+    RPC             shift and go to state 104
+    COMMA           shift and go to state 103
+
+
+state 88
+
+    (29) inst -> STR REG COMMA LPC REG . RPC COMMA REG
+    (30) inst -> STR REG COMMA LPC REG . COMMA NUM NUMBER RPC
+    (31) inst -> STR REG COMMA LPC REG . RPC COMMA MINUS REG
+    (32) inst -> STR REG COMMA LPC REG . RPC COMMA NUM NUMBER
+    (33) inst -> STR REG COMMA LPC REG . RPC
+
+    RPC             shift and go to state 106
+    COMMA           shift and go to state 105
+
+
+state 89
+
+    (7) inst -> SUBS REG COMMA REG COMMA REG .
+
+    ID              reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    NOP             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    MOV             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    SUBS            reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    PRM             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    UMB             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    ORR             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    AND             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    LSL             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    ADD             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    EOR             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    SUB             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    MUL             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    CMP             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    LDR             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    STR             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    B               reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    BEQ             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    BNE             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    BGT             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    BLT             reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+    $end            reduce using rule 7 (inst -> SUBS REG COMMA REG COMMA REG .)
+
+
+state 90
+
+    (8) inst -> SUBS REG COMMA REG COMMA NUM . NUMBER
+
+    NUMBER          shift and go to state 107
+
+
+state 91
+
+    (10) inst -> UMB REG COMMA REG COMMA NUM . NUMBER
+
+    NUMBER          shift and go to state 108
+
+
+state 92
+
+    (11) inst -> ORR REG COMMA REG COMMA REG .
+
+    ID              reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    NOP             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    MOV             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    SUBS            reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    PRM             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    UMB             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    ORR             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    AND             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    LSL             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    ADD             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    EOR             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    SUB             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    MUL             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    CMP             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    LDR             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    STR             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    B               reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    BEQ             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    BNE             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    BGT             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    BLT             reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+    $end            reduce using rule 11 (inst -> ORR REG COMMA REG COMMA REG .)
+
+
+state 93
+
     (12) inst -> AND REG COMMA REG COMMA REG .
 
     ID              reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
+    NOP             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
     MOV             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
-    ADD             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
-    SUB             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
-    MUL             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
-    AND             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
-    ORR             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
-    LSL             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
+    SUBS            reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
     PRM             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
     UMB             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
+    ORR             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
+    AND             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
+    LSL             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
+    ADD             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
+    EOR             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
+    SUB             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
+    MUL             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
     CMP             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
     LDR             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
     STR             reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
@@ -1106,213 +1238,304 @@ state 84
     $end            reduce using rule 12 (inst -> AND REG COMMA REG COMMA REG .)
 
 
-state 85
+state 94
 
     (13) inst -> AND REG COMMA REG COMMA NUM . NUMBER
 
-    NUMBER          shift and go to state 96
-
-
-state 86
-
-    (14) inst -> ORR REG COMMA REG COMMA REG .
-
-    ID              reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    MOV             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    ADD             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    SUB             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    MUL             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    AND             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    ORR             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    LSL             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    PRM             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    UMB             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    CMP             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    LDR             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    STR             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    B               reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    BEQ             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    BNE             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    BGT             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    BLT             reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-    $end            reduce using rule 14 (inst -> ORR REG COMMA REG COMMA REG .)
-
-
-state 87
-
-    (15) inst -> LSL REG COMMA REG COMMA NUM . NUMBER
-
-    NUMBER          shift and go to state 97
-
-
-state 88
-
-    (17) inst -> UMB REG COMMA REG COMMA NUM . NUMBER
-
-    NUMBER          shift and go to state 98
-
-
-state 89
-
-    (23) inst -> LDR REG COMMA LPC REG COMMA . NUM NUMBER RPC
-
-    NUM             shift and go to state 99
-
-
-state 90
-
-    (20) inst -> LDR REG COMMA LPC REG RPC . COMMA REG
-    (21) inst -> LDR REG COMMA LPC REG RPC . COMMA MINUS REG
-    (22) inst -> LDR REG COMMA LPC REG RPC . COMMA NUM NUMBER
-    (24) inst -> LDR REG COMMA LPC REG RPC .
-
-    COMMA           shift and go to state 100
-    ID              reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    MOV             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    ADD             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    SUB             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    MUL             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    AND             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    ORR             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    LSL             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    PRM             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    UMB             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    CMP             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    LDR             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    STR             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    B               reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    BEQ             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    BNE             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    BGT             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    BLT             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-    $end            reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC .)
-
-
-state 91
-
-    (26) inst -> STR REG COMMA LPC REG COMMA . NUM NUMBER RPC
-
-    NUM             shift and go to state 101
-
-
-state 92
-
-    (25) inst -> STR REG COMMA LPC REG RPC . COMMA REG
-    (27) inst -> STR REG COMMA LPC REG RPC . COMMA MINUS REG
-    (28) inst -> STR REG COMMA LPC REG RPC . COMMA NUM NUMBER
-    (29) inst -> STR REG COMMA LPC REG RPC .
-
-    COMMA           shift and go to state 102
-    ID              reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    MOV             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    ADD             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    SUB             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    MUL             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    AND             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    ORR             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    LSL             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    PRM             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    UMB             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    CMP             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    LDR             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    STR             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    B               reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    BEQ             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    BNE             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    BGT             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    BLT             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-    $end            reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC .)
-
-
-state 93
-
-    (7) inst -> ADD REG COMMA REG COMMA NUM NUMBER .
-
-    ID              reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    MOV             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    ADD             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    SUB             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    MUL             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    AND             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    ORR             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    LSL             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    PRM             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    UMB             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    CMP             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    LDR             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    STR             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    B               reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    BEQ             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    BNE             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    BGT             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    BLT             reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-    $end            reduce using rule 7 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
-
-
-state 94
-
-    (9) inst -> SUB REG COMMA REG COMMA NUM NUMBER .
-
-    ID              reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    MOV             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    ADD             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    SUB             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    MUL             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    AND             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    ORR             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    LSL             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    PRM             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    UMB             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    CMP             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    LDR             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    STR             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    B               reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    BEQ             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    BNE             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    BGT             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    BLT             reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
-    $end            reduce using rule 9 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    NUMBER          shift and go to state 109
 
 
 state 95
 
-    (11) inst -> MUL REG COMMA REG COMMA NUM NUMBER .
+    (14) inst -> LSL REG COMMA REG COMMA NUM . NUMBER
 
-    ID              reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    MOV             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    ADD             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    SUB             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    MUL             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    AND             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    ORR             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    LSL             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    PRM             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    UMB             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    CMP             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    LDR             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    STR             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    B               reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    BEQ             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    BNE             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    BGT             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    BLT             reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
-    $end            reduce using rule 11 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    NUMBER          shift and go to state 110
 
 
 state 96
 
+    (15) inst -> ADD REG COMMA REG COMMA REG .
+
+    ID              reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    NOP             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    MOV             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    SUBS            reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    PRM             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    UMB             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    ORR             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    AND             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    LSL             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    ADD             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    EOR             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    SUB             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    MUL             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    CMP             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    LDR             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    STR             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    B               reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    BEQ             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    BNE             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    BGT             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    BLT             reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+    $end            reduce using rule 15 (inst -> ADD REG COMMA REG COMMA REG .)
+
+
+state 97
+
+    (17) inst -> ADD REG COMMA REG COMMA NUM . NUMBER
+
+    NUMBER          shift and go to state 111
+
+
+state 98
+
+    (16) inst -> EOR REG COMMA REG COMMA REG .
+
+    ID              reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    NOP             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    MOV             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    SUBS            reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    PRM             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    UMB             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    ORR             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    AND             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    LSL             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    ADD             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    EOR             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    SUB             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    MUL             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    CMP             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    LDR             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    STR             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    B               reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    BEQ             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    BNE             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    BGT             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    BLT             reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+    $end            reduce using rule 16 (inst -> EOR REG COMMA REG COMMA REG .)
+
+
+state 99
+
+    (18) inst -> SUB REG COMMA REG COMMA REG .
+
+    ID              reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    NOP             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    MOV             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    SUBS            reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    PRM             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    UMB             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    ORR             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    AND             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    LSL             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    ADD             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    EOR             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    SUB             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    MUL             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    CMP             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    LDR             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    STR             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    B               reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    BEQ             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    BNE             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    BGT             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    BLT             reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+    $end            reduce using rule 18 (inst -> SUB REG COMMA REG COMMA REG .)
+
+
+state 100
+
+    (19) inst -> SUB REG COMMA REG COMMA NUM . NUMBER
+
+    NUMBER          shift and go to state 112
+
+
+state 101
+
+    (20) inst -> MUL REG COMMA REG COMMA REG .
+
+    ID              reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    NOP             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    MOV             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    SUBS            reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    PRM             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    UMB             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    ORR             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    AND             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    LSL             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    ADD             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    EOR             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    SUB             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    MUL             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    CMP             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    LDR             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    STR             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    B               reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    BEQ             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    BNE             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    BGT             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    BLT             reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+    $end            reduce using rule 20 (inst -> MUL REG COMMA REG COMMA REG .)
+
+
+state 102
+
+    (21) inst -> MUL REG COMMA REG COMMA NUM . NUMBER
+
+    NUMBER          shift and go to state 113
+
+
+state 103
+
+    (27) inst -> LDR REG COMMA LPC REG COMMA . NUM NUMBER RPC
+
+    NUM             shift and go to state 114
+
+
+state 104
+
+    (24) inst -> LDR REG COMMA LPC REG RPC . COMMA REG
+    (25) inst -> LDR REG COMMA LPC REG RPC . COMMA MINUS REG
+    (26) inst -> LDR REG COMMA LPC REG RPC . COMMA NUM NUMBER
+    (28) inst -> LDR REG COMMA LPC REG RPC .
+
+    COMMA           shift and go to state 115
+    ID              reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    NOP             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    MOV             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    SUBS            reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    PRM             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    UMB             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    ORR             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    AND             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    LSL             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    ADD             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    EOR             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    SUB             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    MUL             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    CMP             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    LDR             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    STR             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    B               reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    BEQ             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    BNE             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    BGT             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    BLT             reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+    $end            reduce using rule 28 (inst -> LDR REG COMMA LPC REG RPC .)
+
+
+state 105
+
+    (30) inst -> STR REG COMMA LPC REG COMMA . NUM NUMBER RPC
+
+    NUM             shift and go to state 116
+
+
+state 106
+
+    (29) inst -> STR REG COMMA LPC REG RPC . COMMA REG
+    (31) inst -> STR REG COMMA LPC REG RPC . COMMA MINUS REG
+    (32) inst -> STR REG COMMA LPC REG RPC . COMMA NUM NUMBER
+    (33) inst -> STR REG COMMA LPC REG RPC .
+
+    COMMA           shift and go to state 117
+    ID              reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    NOP             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    MOV             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    SUBS            reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    PRM             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    UMB             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    ORR             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    AND             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    LSL             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    ADD             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    EOR             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    SUB             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    MUL             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    CMP             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    LDR             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    STR             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    B               reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    BEQ             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    BNE             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    BGT             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    BLT             reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+    $end            reduce using rule 33 (inst -> STR REG COMMA LPC REG RPC .)
+
+
+state 107
+
+    (8) inst -> SUBS REG COMMA REG COMMA NUM NUMBER .
+
+    ID              reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    NOP             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    MOV             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    SUBS            reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    PRM             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    UMB             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    ORR             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    AND             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    LSL             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    ADD             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    EOR             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    SUB             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    MUL             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    CMP             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    LDR             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    STR             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    B               reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    BEQ             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    BNE             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    BGT             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    BLT             reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+    $end            reduce using rule 8 (inst -> SUBS REG COMMA REG COMMA NUM NUMBER .)
+
+
+state 108
+
+    (10) inst -> UMB REG COMMA REG COMMA NUM NUMBER .
+
+    ID              reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    NOP             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    MOV             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    SUBS            reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    PRM             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    UMB             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    ORR             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    AND             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    LSL             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    ADD             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    EOR             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    SUB             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    MUL             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    CMP             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    LDR             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    STR             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    B               reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    BEQ             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    BNE             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    BGT             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    BLT             reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+    $end            reduce using rule 10 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
+
+
+state 109
+
     (13) inst -> AND REG COMMA REG COMMA NUM NUMBER .
 
     ID              reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
+    NOP             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
     MOV             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
-    ADD             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
-    SUB             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
-    MUL             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
-    AND             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
-    ORR             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
-    LSL             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
+    SUBS            reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
     PRM             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
     UMB             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
+    ORR             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
+    AND             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
+    LSL             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
+    ADD             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
+    EOR             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
+    SUB             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
+    MUL             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
     CMP             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
     LDR             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
     STR             reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
@@ -1324,330 +1547,416 @@ state 96
     $end            reduce using rule 13 (inst -> AND REG COMMA REG COMMA NUM NUMBER .)
 
 
-state 97
-
-    (15) inst -> LSL REG COMMA REG COMMA NUM NUMBER .
-
-    ID              reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    MOV             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    ADD             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    SUB             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    MUL             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    AND             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    ORR             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    LSL             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    PRM             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    UMB             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    CMP             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    LDR             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    STR             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    B               reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    BEQ             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    BNE             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    BGT             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    BLT             reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-    $end            reduce using rule 15 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
-
-
-state 98
-
-    (17) inst -> UMB REG COMMA REG COMMA NUM NUMBER .
-
-    ID              reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    MOV             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    ADD             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    SUB             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    MUL             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    AND             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    ORR             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    LSL             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    PRM             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    UMB             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    CMP             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    LDR             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    STR             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    B               reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    BEQ             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    BNE             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    BGT             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    BLT             reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-    $end            reduce using rule 17 (inst -> UMB REG COMMA REG COMMA NUM NUMBER .)
-
-
-state 99
-
-    (23) inst -> LDR REG COMMA LPC REG COMMA NUM . NUMBER RPC
-
-    NUMBER          shift and go to state 103
-
-
-state 100
-
-    (20) inst -> LDR REG COMMA LPC REG RPC COMMA . REG
-    (21) inst -> LDR REG COMMA LPC REG RPC COMMA . MINUS REG
-    (22) inst -> LDR REG COMMA LPC REG RPC COMMA . NUM NUMBER
-
-    REG             shift and go to state 104
-    MINUS           shift and go to state 105
-    NUM             shift and go to state 106
-
-
-state 101
-
-    (26) inst -> STR REG COMMA LPC REG COMMA NUM . NUMBER RPC
-
-    NUMBER          shift and go to state 107
-
-
-state 102
-
-    (25) inst -> STR REG COMMA LPC REG RPC COMMA . REG
-    (27) inst -> STR REG COMMA LPC REG RPC COMMA . MINUS REG
-    (28) inst -> STR REG COMMA LPC REG RPC COMMA . NUM NUMBER
-
-    REG             shift and go to state 108
-    MINUS           shift and go to state 109
-    NUM             shift and go to state 110
-
-
-state 103
-
-    (23) inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER . RPC
-
-    RPC             shift and go to state 111
-
-
-state 104
-
-    (20) inst -> LDR REG COMMA LPC REG RPC COMMA REG .
-
-    ID              reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    MOV             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    ADD             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    SUB             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    MUL             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    AND             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    ORR             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    LSL             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    PRM             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    UMB             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    CMP             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    LDR             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    STR             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    B               reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    BEQ             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    BNE             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    BGT             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    BLT             reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-    $end            reduce using rule 20 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
-
-
-state 105
-
-    (21) inst -> LDR REG COMMA LPC REG RPC COMMA MINUS . REG
-
-    REG             shift and go to state 112
-
-
-state 106
-
-    (22) inst -> LDR REG COMMA LPC REG RPC COMMA NUM . NUMBER
-
-    NUMBER          shift and go to state 113
-
-
-state 107
-
-    (26) inst -> STR REG COMMA LPC REG COMMA NUM NUMBER . RPC
-
-    RPC             shift and go to state 114
-
-
-state 108
-
-    (25) inst -> STR REG COMMA LPC REG RPC COMMA REG .
-
-    ID              reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    MOV             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    ADD             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    SUB             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    MUL             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    AND             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    ORR             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    LSL             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    PRM             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    UMB             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    CMP             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    LDR             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    STR             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    B               reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    BEQ             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    BNE             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    BGT             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    BLT             reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-    $end            reduce using rule 25 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
-
-
-state 109
-
-    (27) inst -> STR REG COMMA LPC REG RPC COMMA MINUS . REG
-
-    REG             shift and go to state 115
-
-
 state 110
 
-    (28) inst -> STR REG COMMA LPC REG RPC COMMA NUM . NUMBER
+    (14) inst -> LSL REG COMMA REG COMMA NUM NUMBER .
 
-    NUMBER          shift and go to state 116
+    ID              reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    NOP             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    MOV             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    SUBS            reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    PRM             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    UMB             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    ORR             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    AND             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    LSL             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    ADD             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    EOR             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    SUB             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    MUL             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    CMP             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    LDR             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    STR             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    B               reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    BEQ             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    BNE             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    BGT             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    BLT             reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
+    $end            reduce using rule 14 (inst -> LSL REG COMMA REG COMMA NUM NUMBER .)
 
 
 state 111
 
-    (23) inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .
+    (17) inst -> ADD REG COMMA REG COMMA NUM NUMBER .
 
-    ID              reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    MOV             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    ADD             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    SUB             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    MUL             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    AND             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    ORR             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    LSL             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    PRM             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    UMB             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    CMP             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    LDR             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    STR             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    B               reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    BEQ             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    BNE             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    BGT             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    BLT             reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    $end            reduce using rule 23 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    ID              reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    NOP             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    MOV             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    SUBS            reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    PRM             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    UMB             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    ORR             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    AND             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    LSL             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    ADD             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    EOR             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    SUB             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    MUL             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    CMP             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    LDR             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    STR             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    B               reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    BEQ             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    BNE             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    BGT             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    BLT             reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
+    $end            reduce using rule 17 (inst -> ADD REG COMMA REG COMMA NUM NUMBER .)
 
 
 state 112
 
-    (21) inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .
+    (19) inst -> SUB REG COMMA REG COMMA NUM NUMBER .
 
-    ID              reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    MOV             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    ADD             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    SUB             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    MUL             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    AND             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    ORR             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    LSL             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    PRM             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    UMB             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    CMP             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    LDR             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    STR             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    B               reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    BEQ             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    BNE             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    BGT             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    BLT             reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    $end            reduce using rule 21 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    ID              reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    NOP             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    MOV             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    SUBS            reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    PRM             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    UMB             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    ORR             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    AND             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    LSL             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    ADD             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    EOR             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    SUB             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    MUL             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    CMP             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    LDR             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    STR             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    B               reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    BEQ             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    BNE             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    BGT             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    BLT             reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
+    $end            reduce using rule 19 (inst -> SUB REG COMMA REG COMMA NUM NUMBER .)
 
 
 state 113
 
-    (22) inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .
+    (21) inst -> MUL REG COMMA REG COMMA NUM NUMBER .
 
-    ID              reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    MOV             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    ADD             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    SUB             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    MUL             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    AND             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    ORR             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    LSL             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    PRM             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    UMB             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    CMP             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    LDR             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    STR             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    B               reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    BEQ             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    BNE             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    BGT             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    BLT             reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    $end            reduce using rule 22 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    ID              reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    NOP             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    MOV             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    SUBS            reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    PRM             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    UMB             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    ORR             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    AND             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    LSL             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    ADD             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    EOR             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    SUB             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    MUL             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    CMP             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    LDR             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    STR             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    B               reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    BEQ             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    BNE             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    BGT             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    BLT             reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
+    $end            reduce using rule 21 (inst -> MUL REG COMMA REG COMMA NUM NUMBER .)
 
 
 state 114
 
-    (26) inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .
+    (27) inst -> LDR REG COMMA LPC REG COMMA NUM . NUMBER RPC
 
-    ID              reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    MOV             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    ADD             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    SUB             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    MUL             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    AND             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    ORR             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    LSL             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    PRM             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    UMB             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    CMP             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    LDR             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    STR             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    B               reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    BEQ             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    BNE             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    BGT             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    BLT             reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
-    $end            reduce using rule 26 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    NUMBER          shift and go to state 118
 
 
 state 115
 
-    (27) inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .
+    (24) inst -> LDR REG COMMA LPC REG RPC COMMA . REG
+    (25) inst -> LDR REG COMMA LPC REG RPC COMMA . MINUS REG
+    (26) inst -> LDR REG COMMA LPC REG RPC COMMA . NUM NUMBER
 
-    ID              reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    MOV             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    ADD             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    SUB             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    MUL             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    AND             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    ORR             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    LSL             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    PRM             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    UMB             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    CMP             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    LDR             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    STR             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    B               reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    BEQ             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    BNE             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    BGT             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    BLT             reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
-    $end            reduce using rule 27 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    REG             shift and go to state 119
+    MINUS           shift and go to state 120
+    NUM             shift and go to state 121
 
 
 state 116
 
-    (28) inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .
+    (30) inst -> STR REG COMMA LPC REG COMMA NUM . NUMBER RPC
 
-    ID              reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    MOV             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    ADD             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    SUB             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    MUL             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    AND             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    ORR             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    LSL             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    PRM             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    UMB             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    CMP             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    LDR             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    STR             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    B               reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    BEQ             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    BNE             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    BGT             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    BLT             reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
-    $end            reduce using rule 28 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    NUMBER          shift and go to state 122
+
+
+state 117
+
+    (29) inst -> STR REG COMMA LPC REG RPC COMMA . REG
+    (31) inst -> STR REG COMMA LPC REG RPC COMMA . MINUS REG
+    (32) inst -> STR REG COMMA LPC REG RPC COMMA . NUM NUMBER
+
+    REG             shift and go to state 123
+    MINUS           shift and go to state 124
+    NUM             shift and go to state 125
+
+
+state 118
+
+    (27) inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER . RPC
+
+    RPC             shift and go to state 126
+
+
+state 119
+
+    (24) inst -> LDR REG COMMA LPC REG RPC COMMA REG .
+
+    ID              reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    NOP             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    MOV             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    SUBS            reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    PRM             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    UMB             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    ORR             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    AND             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    LSL             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    ADD             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    EOR             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    SUB             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    MUL             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    CMP             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    LDR             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    STR             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    B               reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    BEQ             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    BNE             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    BGT             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    BLT             reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+    $end            reduce using rule 24 (inst -> LDR REG COMMA LPC REG RPC COMMA REG .)
+
+
+state 120
+
+    (25) inst -> LDR REG COMMA LPC REG RPC COMMA MINUS . REG
+
+    REG             shift and go to state 127
+
+
+state 121
+
+    (26) inst -> LDR REG COMMA LPC REG RPC COMMA NUM . NUMBER
+
+    NUMBER          shift and go to state 128
+
+
+state 122
+
+    (30) inst -> STR REG COMMA LPC REG COMMA NUM NUMBER . RPC
+
+    RPC             shift and go to state 129
+
+
+state 123
+
+    (29) inst -> STR REG COMMA LPC REG RPC COMMA REG .
+
+    ID              reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    NOP             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    MOV             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    SUBS            reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    PRM             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    UMB             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    ORR             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    AND             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    LSL             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    ADD             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    EOR             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    SUB             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    MUL             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    CMP             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    LDR             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    STR             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    B               reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    BEQ             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    BNE             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    BGT             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    BLT             reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+    $end            reduce using rule 29 (inst -> STR REG COMMA LPC REG RPC COMMA REG .)
+
+
+state 124
+
+    (31) inst -> STR REG COMMA LPC REG RPC COMMA MINUS . REG
+
+    REG             shift and go to state 130
+
+
+state 125
+
+    (32) inst -> STR REG COMMA LPC REG RPC COMMA NUM . NUMBER
+
+    NUMBER          shift and go to state 131
+
+
+state 126
+
+    (27) inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .
+
+    ID              reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    NOP             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    MOV             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    SUBS            reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    PRM             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    UMB             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    ORR             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    AND             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    LSL             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    ADD             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    EOR             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    SUB             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    MUL             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    CMP             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    LDR             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    STR             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    B               reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    BEQ             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    BNE             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    BGT             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    BLT             reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    $end            reduce using rule 27 (inst -> LDR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+
+
+state 127
+
+    (25) inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .
+
+    ID              reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    NOP             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    MOV             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    SUBS            reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    PRM             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    UMB             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    ORR             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    AND             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    LSL             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    ADD             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    EOR             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    SUB             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    MUL             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    CMP             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    LDR             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    STR             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    B               reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    BEQ             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    BNE             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    BGT             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    BLT             reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    $end            reduce using rule 25 (inst -> LDR REG COMMA LPC REG RPC COMMA MINUS REG .)
+
+
+state 128
+
+    (26) inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .
+
+    ID              reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    NOP             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    MOV             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    SUBS            reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    PRM             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    UMB             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    ORR             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    AND             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    LSL             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    ADD             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    EOR             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    SUB             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    MUL             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    CMP             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    LDR             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    STR             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    B               reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    BEQ             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    BNE             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    BGT             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    BLT             reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    $end            reduce using rule 26 (inst -> LDR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+
+
+state 129
+
+    (30) inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .
+
+    ID              reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    NOP             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    MOV             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    SUBS            reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    PRM             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    UMB             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    ORR             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    AND             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    LSL             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    ADD             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    EOR             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    SUB             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    MUL             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    CMP             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    LDR             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    STR             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    B               reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    BEQ             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    BNE             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    BGT             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    BLT             reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+    $end            reduce using rule 30 (inst -> STR REG COMMA LPC REG COMMA NUM NUMBER RPC .)
+
+
+state 130
+
+    (31) inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .
+
+    ID              reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    NOP             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    MOV             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    SUBS            reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    PRM             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    UMB             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    ORR             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    AND             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    LSL             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    ADD             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    EOR             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    SUB             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    MUL             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    CMP             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    LDR             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    STR             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    B               reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    BEQ             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    BNE             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    BGT             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    BLT             reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+    $end            reduce using rule 31 (inst -> STR REG COMMA LPC REG RPC COMMA MINUS REG .)
+
+
+state 131
+
+    (32) inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .
+
+    ID              reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    NOP             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    MOV             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    SUBS            reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    PRM             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    UMB             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    ORR             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    AND             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    LSL             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    ADD             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    EOR             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    SUB             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    MUL             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    CMP             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    LDR             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    STR             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    B               reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    BEQ             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    BNE             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    BGT             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    BLT             reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
+    $end            reduce using rule 32 (inst -> STR REG COMMA LPC REG RPC COMMA NUM NUMBER .)
 

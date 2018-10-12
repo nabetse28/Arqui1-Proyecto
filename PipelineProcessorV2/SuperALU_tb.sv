@@ -78,6 +78,9 @@ initial
 		Control = 3'b001; A = 32'b0100; B = 32'b0010; 
 		#10;
 		#10;
+		Control = 3'b001; A = 32'b0100; B = 32'b0100; 
+		#10;
+		#10;
 		
 		$display("Testbench para AND");
 		Control = 3'b010; A = 32'b0100; B = 32'b0010; 

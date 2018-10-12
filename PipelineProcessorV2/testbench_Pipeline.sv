@@ -19,91 +19,13 @@ initial
 
 	begin
 		reset <= 1; # 10; reset <= 0;
-	
+	end
 // generate clock to sequence tests
 
+	always
+	begin
 		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; go <= 1; # 5; clk <= 0; go <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
-		clk <= 1; # 5; clk <= 0; # 5;
+
 	end
 	
 

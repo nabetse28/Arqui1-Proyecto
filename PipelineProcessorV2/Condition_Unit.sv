@@ -13,9 +13,9 @@ logic [3:0] Flags;
 logic CondEx;
 
 flopenr #(2)flagreg1(clk, reset, FlagWrite[1],
-							FlagsE[3:2], Flags[3:2]);
+							ALUFlags[3:2], Flags[3:2]);
 flopenr #(2)flagreg0(clk, reset, FlagWrite[0],
-							FlagsE[1:0], Flags[1:0]);
+							ALUFlags[1:0], Flags[1:0]);
 							
 							
 // write controls are conditional
@@ -37,9 +37,9 @@ module condcheck(input logic [3:0] Cond,
 					  output logic CondEx);
 					  
 					  
-logic neg, zero, carry, overflow, ge;
+logic neg, zero, carry1, overflow, ge;
 
-assign {neg, zero, carry, overflow} = Flags;
+assign {neg, zero, carry1, overflow} = Flags;
 
 assign ge = (neg == overflow);
 
@@ -50,9 +50,9 @@ always_comb
 		4'b0001: 
 			CondEx = ~zero; // NE
 		4'b0010: 
-			CondEx = carry; // CS
+			CondEx = carry1; // CS
 		4'b0011: 
-			CondEx = ~carry; // CC
+			CondEx = ~carry1; // CC
 		4'b0100: 
 			CondEx = neg; // MI
 		4'b0101:
@@ -62,9 +62,9 @@ always_comb
 		4'b0111: 
 			CondEx = ~overflow; // VC
 		4'b1000: 
-			CondEx = carry & ~zero; // HI
+			CondEx = carry1 & ~zero; // HI
 		4'b1001: 
-			CondEx = ~(carry & ~zero); // LS
+			CondEx = ~(carry1 & ~zero); // LS
 		4'b1010: 
 			CondEx = ge; // GE
 		4'b1011: 

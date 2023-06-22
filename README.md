@@ -1,1 +1,1 @@
-# TEC-Arqui1
+# Arqui1-Proyecto
